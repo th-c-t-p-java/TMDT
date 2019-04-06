@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" th:href="@{https://use.fontawesome.com/releases/v5.7.1/css/all.css}" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../../static/css/font-awesome.css" th:href="@{/css/font-awesome.css}"/>
+	<script src="https://cdn.jsdelivr.net/npm/vue" th:src="@{https://cdn.jsdelivr.net/npm/vue}"></script>
+	<link rel="stylesheet" type="text/css" href="../../static/bootstrap/bootstrap.min.css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+	<script src="../../static/bootstrap/bootstrap.js" th:src="@{/bootstrap/bootstrap.js}"/></script>
+	<script src="../../static/bootstrap/jquery.min.js" th:src="@{/bootstrap/jquery.min.js}"/></script>
+	<script src="../../static/bootstrap/bootstrap.min.js"th:src="@{/bootstrap/bootstrap.min.js}"/></script>
+	<link rel="stylesheet" type="text/css" href="../../static/css/general-style.css" th:href="@{/css/general-style.css}"/>
+	<link rel="stylesheet" type="text/css" href="../../static/css/style-header.css" th:href="@{/css/style-header.css}"/>
+	<link rel="stylesheet" type="text/css" href="../../static/css/style-footer.css" th:href="@{/css/style-footer.css}"/>
+	<link rel="stylesheet" type="text/css" href="../../static/css/style-cart.css" th:href="@{/css/style-cart.css}"/>
+
+
+	<link rel="icon" href="../../static/images/tiki-logo.png" th:href="@{/images/tiki-logo.png}" />
+	<title>Giỏ hàng TiKi</title>
+</head>
+<body>
+	
+	<!--HEADER-->
+	<div th:insert="components/general/header::header"></div>
+	<!--Main-->
+	<div class="content row">
+		<div class="col-md-12 alert-wrap">
+             <div class="alert alert-warning">Bạn ơi hãy chọn địa chỉ nhận hàng để xem sản phẩm nào có hỗ trợ TikiNOW giao nhanh - <a style="color: blue" href="#">Nhập địa chỉ</a>
+             </div>                    
+        </div>
+        <form class="col-md-12">
+        	<div class="row">
+        		<div class="cart-wrap col-md-9">
+		        	<div class="deal-header">
+			            <div class="icon-header"><i class="fas fa-shopping-cart "></i></div>
+			            <div class="deal-header-content-wrap">
+			            	<div class="title">Giỏ hàng của bạn</div>
+				            <div class="text">
+				               Số lượng (<span th:text="${totalItem}"></span>)
+				            </div>
+			            </div>	            
+			        </div><hr/>
+			        <!-- PRODUCTS -->
+			        <div class="cart-product-wrap" >
+			       
+			        	<div class="cart-product" th:each="item : ${cartItemLst}">
+			        		<div class="box row">
+				        		<img class="thumbs" src="../../static/images/product-2.jpg" th:src="@{'/images/'+ ${item.getImage()}}"/>
+				        		<div class="info col-md-5">
+				        			<p class="name"><a  href="#" th:href="@{detail}" th:text="${item.getProductName()}"></a>&nbsp;&nbsp;<span class="sale badge badge-warning">17%</span></p> 
+				        			<p class="price"><label>Giá tiền: </label><span th:text="${item.getAmount()+'&nbsp;VND'}"></span></p>
+				        			<!-- <p class="regular-price">17.000 VND</p> -->
+				        			     	
+				        			<p class="action"><a class="act-delete" href="#">Xóa</a><a class="act-save-for-later" href="#">Để mua sau</a></p>
+				        			
+				        		</div>
+				        		<div class="quantity-wrap col-md-5">
+				        			<div class="quantity-block btn-group">
+					        			<button type="button" class="btn btn-primary btn-minus">-</button>
+					        			<input type="text" name="quantity" class="quantity" th:value="${item.getQuantity()}">
+					        			<button type="button" class="btn btn-primary btn-plus">+</button>
+				        			</div>
+				        		</div>
+			        		</div>
+			        		<hr>
+			        	</div>
+			        	
+			        </div>
+		        </div>       
+	         <!--PAYMENT  -->
+	        	<div class="payment-wrap col-md-3">
+		        	<div class="box">
+		        		<div class="payment-box row">
+				        	<div class="payment-price col-md-12">
+				        		Tạm tính:<span style="float: right" th:text="${totalPrice}+'&nbsp;VND'"></span><hr>
+				        	</div>
+
+				        	<div class="payment-price col-md-12">
+				        		Tổng tiền: <span style="float: right; font-size: 20px; color: #fe3834;" th:text="${totalPrice}+'&nbsp;VND'"></span>
+				        		<br><span style="font-size: 12px;">(Đã bao gồm thuế VAT)</span>
+				        	</div>
+				        </div>
+		        	</div>
+		        	<button class="col-md-12 btn btn-danger btn-payment-checkout">Thanh toán</button>
+		        	<div class="box">
+		        		<div class="payment-box row">
+				        	<div class="payment-price col-md-12">
+				        		Mã giảm giá/ Quà tặng<hr>
+				        	</div>
+
+				        	<div class="payment-price col-md-12 input-group">
+				        		<input type="text" name="coupon" id="input-coupon" placeholder="Nhập ở đây">
+				        		<button class="btn btn-danger" id="btn-coupon">OK</button>
+				        	</div>
+				        </div>
+		        	</div>
+			    </div>
+	        </div>
+	       
+		</form>
+	</div>
+	<!--FOOTER-->
+	<div th:insert="components/general/footer::footer"></div>
+</body>
+<script>
+	var sl = new Vue({
+		el: '#quantity-block',
+		data:{quantity: 1}			
+	});
+	function increaseNdecrease(i)
+	{
+		parseInt(i);
+		sl.quantity+=i;
+	}
+</script>
+</html>

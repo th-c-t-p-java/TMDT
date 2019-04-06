@@ -1,0 +1,42 @@
+.logo{
+	text-align: center;
+}
+.login{
+	text-align: center;
+}
+.dangky{
+	text-align: center;
+	border: 1px solid black;
+	 width: 30%;
+    margin-left: 35%;
+        padding: 2%;
+}
+.matkhau{
+	margin-right: -2.5%;
+	    padding: 2%;
+	    margin-bottom: 3%;
+
+}
+.tendangky{
+	margin-right: 5%;
+	    padding: 8px;
+    margin-bottom: 4%;
+}
+.xacnhan{
+	    padding: 2%;
+    margin-right: 12%;
+    margin-bottom: 4%;
+}
+.email1{
+	padding: 2%;
+	 margin-bottom: 3%;
+}
+.email{
+	margin-left: 10%;
+
+}
+.dangky2{
+	    padding: 2%;
+    color: white;
+    background: green;
+}

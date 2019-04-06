@@ -1,0 +1,124 @@
+/*GLOBAL CSS*/
+a{
+	color: blue;
+}
+
+
+/*END GLOBAL CSS*/
+.alert-wrap{
+	width: 100%;
+}
+.alert-wrap .alert.warning{
+	border: 1px solid #edc200;
+}
+.alert-wrap .alert{
+	
+}
+.alert-wrap > .alert.alert-info{
+	display: none;
+}
+.cart-wrap{
+	background: white;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+.cart-product-wrap{	
+
+}
+.cart-product-wrap .cart-product{
+
+}
+.cart-product-wrap .cart-product .box{
+	padding-left: 50px;
+}
+
+.box .thumbs{
+	height: 100px;
+	width: 100px;
+	margin-right: 10px;
+}
+
+.box .info{
+	
+}
+.box .info p label{
+	font-weight: bold;
+}
+.box .info .name{
+	font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.box .info .seller-by{
+	font-size: 13px;
+}
+.box .info .action{
+	font-size: 13px;
+}
+.box .info .action a{
+	margin-right: 30px;
+}
+.box .price {
+	font-size: 13px;
+
+	margin-bottom: 5px;
+}
+.box .regular-price{
+	text-decoration: line-through;
+    color: gray;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+.box .price .sale{
+
+}
+.box .quantity-wrap {
+	
+}
+.box .quantity-wrap .quantity-block{
+	float:right;
+}
+.box .quantity-wrap .quantity-block .btn{
+	padding: 1px 10px;
+}
+.box .quantity-wrap .quantity-block .btn-minus{
+	
+}
+.box .quantity-wrap .quantity-block .btn-plus{
+	
+}
+.box .quantity-wrap .quantity-block .quantity{
+	width: 30px;
+    padding: 0px 7px;
+    font-size: 12px;
+}
+.payment-wrap{
+	padding-left: 10px;
+}
+.payment-wrap .box{
+	margin-bottom: 10px;
+}
+.payment-wrap .btn-payment-checkout{
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.payment-wrap .payment-box{
+
+}
+.payment-wrap .payment-box .payment-price{
+
+}
+.payment-wrap .payment-box .payment-price span{
+	font-weight: 500;
+}
+.payment-wrap .payment-box .payment-price #input-coupon{
+	border-radius: 5px;
+	width: 220px;
+}
+.payment-wrap .payment-box .payment-price #btn-coupon{
+	margin-left: 5px;
+}
+
+

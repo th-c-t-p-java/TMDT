@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="customer" type="com.web.demo.model.Customer"/>
+        <typeAlias alias="account" type="com.web.demo.model.Account"/>
+        <typeAlias alias="accounttype" type="com.web.demo.model.AccountType"/>
+        <typeAlias alias="catalog" type="com.web.demo.model.Catalog"/>
+        <typeAlias alias="product" type="com.web.demo.model.Product"/>
+        <typeAlias alias="customertype" type="com.web.demo.model.CustomerType"/>
+        <typeAlias alias="order" type="com.web.demo.model.Order"/>
+        <typeAlias alias="cart" type="com.web.demo.model.Cart"/>
+        <typeAlias alias="transaction" type="com.web.demo.model.Transaction"/>
+                
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver"/>
+                <property name="url" value="jdbc:postgresql://127.0.0.1:5432/TMDT"/>
+                <property name="username" value="postgres"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/web/demo/mapper/CustomerMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/AccountMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/AccountTypeMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/CartItemMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/CatalogMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/CustomerTypeMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/OrderMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/ProductMapper.xml"/>
+        <mapper resource="com/web/demo/mapper/TransactionMapper.xml"/>
+    </mappers>
+</configuration>

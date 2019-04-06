@@ -1,0 +1,209 @@
+body{
+	background: #f4f4f4f4;
+}
+a{
+	color: black;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+h3{
+	font-size: 16px;
+}
+h4,h5{
+	font-size: 13px;
+}
+.content{
+	padding: 5px 40px;
+}
+.box,.wrap{
+	padding: 10px;
+	background: white;
+}
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, 
+.col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, 
+.col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6,
+.col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10,
+.col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, 
+.col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, 
+.col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, 
+.col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, 
+.col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, 
+.col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto{
+	padding: 0px;
+}
+.see-more{
+	text-align: center;
+}
+.see-more a:hover{
+	background: #189eff;
+    color: white;
+}
+.see-more a{
+	background: none;
+    border: 1px solid #189eff;
+    color: #189eff;
+    padding: 5px 50px;
+    font-size: 13px;
+    border-radius: 3px;
+}
+/*START MENU*/
+.menu{
+	background: #e2e2e2;
+    padding: 10px;
+    list-style-type: none;
+}
+.menu li{
+	margin-bottom: 5px;
+	position: relative;
+	padding: 0px 10px;
+}
+.menu li i{
+	margin-right: 10px;
+	width: 20px;
+}
+.menu li a{
+	color: #444;
+	font-size: 14px;
+}
+.menu li:hover, .menu > li:hover > a{
+	background: #0a8ce6;
+	color: white;
+}
+.menu li:hover .sub-menu{
+	display: block;
+    background: #e2e2e2;
+    position: absolute;
+    top: -10px;
+    left: 100%;
+    z-index: 100;
+    width: 100%;
+}
+.menu .menu-item > .sub-menu{
+	display: none;
+
+}
+.sub-menu ul{
+	padding: 10px 10px;
+	list-style-type: none;
+}
+.sub-menu ul li:hover >a{
+	color: white;
+}
+/*END MENU*/
+/*START CSS CAROUSEL*/
+.slider-wrap{
+	
+}
+.owl-carousel {
+	height: 330px
+}
+.carousel-item{
+	width: 100%;
+	height: 330px;
+	display: block;
+}
+/*END CSS CAROUSEL*/
+/* START PRODUCTS CSS */
+input[type="text"]{
+	padding: 5px;
+}
+.wrap-product-list{
+	background: white;
+	border-radius: 8px;
+	margin-bottom: 20px;
+	padding-bottom: 30px;
+}
+.loader-area{
+	margin-bottom: 20px;
+}
+.deal-header{
+	padding: 20px;
+}
+.deal-header .icon-header{
+	text-align: center;
+	float: left;
+	font-size: 29px;
+    padding: 10px 17px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #ff3d00;
+    color: white;
+    width: 62px;
+}
+.deal-header-content-wrap{
+	display: inline-block;
+}
+.deal-header .title{
+	color: #ff3d00;
+    font-size: 18px;
+    font-weight: 500;
+}
+.deal-header .text{
+	font-size: 13px;
+    margin-top: 3px;
+    color: #4a4a4a;
+}
+
+.product-list{
+
+}
+.product-list .product-wrap{
+	padding: 10px;
+	display: inline-block;
+	width: 24%;
+	background: white;
+} 
+.product-list .product-wrap:hover{	
+	border:1px solid #efefef;
+	border-radius: 3px;
+	padding: 8px;
+}
+
+.product-list .product-wrap .product{
+	
+}
+.product-list .product-wrap .product .badge{
+	
+}
+.product-list .product-wrap .product .content-wrap{
+	
+}
+.product-list .product-wrap .product .content-wrap .product-img{
+	width: 200px;
+	min-width: 200px;
+	height: 200px;
+    margin-bottom: 10px;
+}
+.product-list .product-wrap .product .content-wrap .product-name{
+	
+}
+.product-list .product-wrap .product .content-wrap .product-name a{
+	color: #242424!important;
+	font-size: 13px;
+    font-weight: 400;
+    line-height: 1.54;
+    overflow: hidden;
+    height: 40px;
+    
+}
+.product-list .product-wrap .product .content-wrap .product-price{
+	font-size: 15px;
+    color: #242424;
+    font-weight: 500;
+    padding: 0;
+    text-align: left;
+}
+.product-list .product-wrap .product .content-wrap .regular-price{
+	font-size: 11px;
+    color: #a2a2a2;
+    text-decoration: line-through;
+    text-align: left;
+    font-weight: 300;
+    margin-left: 8px;
+}
+/* END PRODUCTS CSS */
+    

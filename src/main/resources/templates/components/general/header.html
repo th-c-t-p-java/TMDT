@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+	
+	<link rel="stylesheet" type="text/css" href="../../../static/css/font-awesome.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../static/bootstrap/bootstrap.min.css"/>
+	<script src="../../../static/bootstrap/bootstrap.js"/></script>
+	<script src="../../../static/bootstrap/jquery.min.js"/></script>
+	<script src="../../../static/bootstrap/bootstrap.min.js"/></script>
+	<link rel="stylesheet" type="text/css" href="../../../static/css/style-header.css"/>
+
+	<title>Insert title here</title>
+</head>
+<body>
+	<header id = "header" class="row" th:fragment="header">
+		<!--START TOP HEADER-->
+		<div id ="top-header" class="col-md-12">
+			<div class="container">
+		        <div class="right">
+		        	<div class="top-label">
+		        		 <a  target="_blank" href="https://tiki.vn/top/uu-dai-doi-tac?src=header_label" title="Ưu đãi đối tác" onclick="">
+				        <i class="tikicon icon-uu-dai-hop-tac"></i>        Ưu đãi đối tác    </a>
+		        	</div>
+				   
+		        	<div class="top-label">
+		        		<a  target="_blank" href="https://tiki.vn/phieu-qua-tang/c13744?src=header_label" title="Phiếu quà tặng" onclick="">
+				        <i class="tikicon icon-gift-card"></i>        Phiếu quà tặng    </a>
+
+		        	</div>
+				    <div class="top-label">
+				    	 <a  target="_blank" href="https://tiki.vn/booking/hotel?src=header_label" title=" Đặt khách sạn" onclick="">
+				        <i class="tikicon icon-booking_dot_com"></i>         Đặt khách sạn    </a>
+				    </div>
+				   
+				    <div class="top-label">
+				    	<a  target="_blank" href="https://tiki.vn/dat-ve-may-bay?src=header_label" title="Đặt vé máy bay" onclick="">
+				        <i class="tikicon icon-gotadi"></i>Đặt vé máy bay</a>
+
+				    </div>
+				    
+				    <div class="top-label">
+				    	<a  target="_blank" href="https://tiki.vn/chuong-trinh/clearance-sale?src=header_label" title="Săn hàng tồn" onclick="">
+				        <i style="margin-top: -1px" class="tikicon icon-clearance-sale"></i>Săn hàng tồn</a>
+
+				    </div>
+				    
+				    <div class="top-label">
+				    	<a  target="_blank" href="https://tiki.vn/deal-hot?src=header_label" title="Deal SỐC giảm giá mỗi ngày" onclick="ga('send','event','tiki-hot','click','header-label')">
+				        <i class="ico ico-fire"></i>Khuyến Mãi HOT
+				    	</a>
+
+				    </div>
+				    
+				    <div class="top-label">
+				    	 <a  target="_blank" href="https://tiki.vn/hang-ngoai-nhap?src=header_label" title="Hàng quốc tế" onclick="">
+				        <i class="tikicon icon-global-18"></i>Hàng quốc tế    
+				   		</a>
+				    </div>
+				   
+				   <div class="top-label">
+					   	<a  target="_blank" href="https://tiki.vn/hang-ngoai-nhap?src=header_label" title="Hàng quốc tế" onclick="">
+					        <i class="tikicon icon-global-18"></i>Bán hàng cùng Tiki   
+					    </a>
+				   </div>
+					
+				   
+		        </div>
+    		</div>
+		</div>
+		<!--END TOP HEADER-->
+		<!--START BOTTOM HEADER-->
+		<div id="bottom-header" class="col-md-12">
+			
+			<a href="~/index.html" th:href="@{/}" class="col-md-2">
+				<img src="https://salt.tikicdn.com/ts/banner/7e/55/26/056c66d63fa9a1045d2ceb803f2c9140.png"/>
+			</a>
+			<div class="col-md-5">
+				<form id="input-search" class="col-md-12">					
+					<input type="text" name="" id="txt-search" class="col-md-9"/>
+					
+					<input type="submit" name="" id="btn-search" value="Tìm kiếm"/>
+				</form>
+			</div>
+			<div class="" id="header-link">
+				<a href="#" class="">
+					<img src="/images/Track Order_32px.png"/>
+					Theo dõi đơn hàng
+				</a>
+				<a href="#" class="col-md-4">
+					<img src="/images/Notification_32px.png"/>
+					Thông báo của bạn				
+				</a>
+				<a href="components/sign-in.html" th:href="@{sign-in}" class="col-md-4">
+					<img src="/images/User_32px.png">
+					Đăng xuất
+				</a>
+				<a href="../cart.html" th:href="@{cart}" class="col-md-4" style="padding: 15px 5px; border: 3px solid white; border-radius: 3px;">
+					<img src="/images/Shopping Cart_32px.png"/>
+					Giỏ hàng
+				</a>
+			</div>
+			
+		</div>
+		<!--END BOTTOM HEADER-->
+		<!--START NAVBAR-->
+		<nav id="navbar" class="col-md-12">
+			<a class="navbar-items col-md-2" href="#">
+				<i style="font-size: 25px" class="icon-list-ul"></i>  <span>DANH MỤC SẢN PHẨM</span>
+			</a>
+			<a class="navbar-items col-md-2" href="#">
+				<img src="/images/icon-tiki-now.jpg" style="height: 15px; border-radius: 5px;" />   <span>TikiNOW Giao hàng nhanh</span>
+			</a>
+			<a class="navbar-items  col-md-2" href="#">
+				<i class="icon-map-marker"></i>   <span>Bạn muốn giao đến đâu ?</span>
+			</a>
+			<a class="navbar-items col-md-2" href="#">
+				<i  class="icon-caret-down"></i>   <span>Sản phẩm đã xem</span>
+			</a>
+			<a class="navbar-items col-md-2" href="#">
+				<i  class="icon-star"></i>   <span>Sản phẩm chính hiệu</span>
+			</a>
+			<a class="navbar-items col-md-2" href="#">
+				<i  class="icon-refresh"></i>   <span>30 ngày đổi trả</span>
+			</a>
+
+		</nav>
+		<!--END NAVBAR-->
+
+	</header>
+</body>
+</html>

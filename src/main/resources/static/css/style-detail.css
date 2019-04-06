@@ -1,0 +1,135 @@
+/*GLOBAL CSS*/
+a{
+	color:blue;
+}
+.wrap{
+
+}
+
+/*END*/
+.content > div{
+	margin-bottom: 20px;
+}
+.product-preview{
+	
+}
+.more-product{
+
+}
+.product-thumbs{
+	
+}
+.product-thumbs .thumbs{
+	text-align: center;
+    padding: 5px;
+    border: 1px solid #f3f0f0;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+.product-thumbs .thumbs img{
+	max-width: 75px;
+}
+.lagre-img{
+	
+}
+.lagre-img .img-wrap{
+	
+}
+.lagre-img .img-wrap img{
+	max-width: 100%;
+    max-height: 320px;
+}
+.product-info{
+
+}
+.product-info>div{
+	width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.more-inf>div{
+	font-size: 13px;
+}
+.more-inf>div label{
+	width: 150px;
+    font-weight: bold;
+}
+
+
+
+
+.more-inf>div{
+	font-size: 13px;
+}
+.more-inf>div div label{
+	width: 150px;
+    font-weight: bold;
+}
+.more-inf>div>div label span{
+	
+}
+.product-name{
+	border-bottom: 1px solid #f3f0f0
+}
+.product-name .name{
+	margin-bottom: 2px;
+	font-weight: 500;
+}
+.product-name #sku{
+	margin-bottom: 0px;
+    font-size: 11px;
+}
+.more-inf{
+
+}
+.more-inf p{
+	
+}
+.more-inf p span{
+	
+}
+
+
+.quantity-block{
+	margin-top: 30px;
+}
+.quantity-block .amount{
+	display: inline-block;
+}
+.quantity-block .amount .btn-group{
+	padding: 0px;
+}
+.quantity-block .amount .btn-group button{
+	
+}
+.quantity-block .amount .btn-group input{
+	width: 40px;
+}
+.quantity-block .add-to-cart{
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

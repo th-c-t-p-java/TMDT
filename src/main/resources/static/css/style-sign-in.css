@@ -1,0 +1,39 @@
+.logo{
+	text-align: center;
+}
+.login{
+	text-align: center;
+}
+.dangnhap{
+	text-align: center;
+	    border: 1px solid black;
+    width: 30%;
+    margin-left: 35%;
+}
+.label-link{
+	margin-left: 16%;
+	font-size: 18px;
+}
+.matkhau{
+	width: 60%;
+	padding: 2%;
+	margin-bottom: 5%;
+}
+.tendangnhap{
+	width: 60%;
+	margin-bottom: 5%;
+	padding: 2%;
+}
+.dangnhap1{
+	margin-right: 36%;
+	font-size: 19px;
+}
+.matkhau1{
+	font-size: 19px;
+}
+.dangnhap2{
+	    padding: 3%;
+    width: 50%;
+    background: green;
+    color: white;
+}

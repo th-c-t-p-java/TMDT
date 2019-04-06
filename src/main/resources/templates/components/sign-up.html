@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Tạo tài khoản</title>
+<meta charset="utf-8"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../static/css/style-sign-up.css" th:href="@{/css/style-sign-up.css}">
+  </head>
+  <body>
+  	<div>
+    <div class="logo">
+      <img src="../../static/images/tiki-logo.png" th:src="@{/images/tiki-logo.png}">
+    </div>
+    <div class="login">
+    	<h1>Đăng Ký </h1>
+    </div>
+<div class="dangky">
+<label for="login_field" class="dangky1">
+ Tên đăng nhập:
+</label>
+<input type="text" name="login" id="login_field" class="tendangky" tabindex="1" autocapitalize="off" autocorrect="off" autofocus="autofocus"><br>
+<label for="password" class="matkhau1">Mật Khẩu:</label>
+
+<input type="text" name="password" id="password" class="matkhau"><br>
+<label for="password" class="xacnhanmatkhau">Nhập Lại Mật Khẩu:</label>
+
+<input type="text" name="password" id="password" class="xacnhan"><br>
+<label for="password" class="email">Email:</label>
+
+<input type="text" name="password" id="password" class="email1"><br>
+<button class="dangky2">
+	Đăng Ký
+</button>
+<a class="label-link" href="sign-in.html" th:href="@{sign-in}">Sign-in</a><br>
+</div>
+  </body>
+  </html>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-  
+  <properties resource="jdbc.properties"/>
   <context id="context1">
-    <jdbcConnection connectionURL="jdbc:postgresql://127.0.0.1:5432/TMDT" driverClass="org.postgresql.Driver" password="root" userId="postgres" />
+    <jdbcConnection connectionURL="${jdbc.url}" driverClass="${jdbc.driverClassName}" password="${jdbc.password}" userId="${jdbc.username}" />
     <javaModelGenerator targetPackage="com.web.demo.model" targetProject="Demo/src/main/java" />
     
     <sqlMapGenerator targetPackage="com.web.demo.mapper" targetProject="Demo/src/main/resources" />

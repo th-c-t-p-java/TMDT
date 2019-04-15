@@ -2,12 +2,9 @@
 <html xmlns:th="https://www.thymeleaf.org" >
 <head>
 	<meta charset="utf-8">
-
-	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" th:href="@{https://use.fontawesome.com/releases/v5.7.1/css/all.css}" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/vue" th:src="@{https://cdn.jsdelivr.net/npm/vue}"></script>
-	<link rel="stylesheet" type="text/css" href="../../static/css/font-awesome.css" th:href="@{/css/font-awesome.css}"/>
-	
+	<link rel="stylesheet" type="text/css" href="../../static/css/font-awesome.css" th:href="@{/css/font-awesome.css}"/>	
 	<link rel="stylesheet" type="text/css" href="../../static/bootstrap/bootstrap.min.css" th:href="@{/bootstrap/bootstrap.min.css}"/>
 	<script src="../../static/bootstrap/bootstrap.js" th:src="@{/bootstrap/bootstrap.js}"/></script>
 	<script src="../../static/bootstrap/jquery.min.js" th:src="@{/bootstrap/jquery.min.js}"/></script>
@@ -27,6 +24,47 @@
 	
 	<!--HEADER-->
 	<div th:insert="components/general/header::header"></div>
+	
+	<div id="app" th:if="${message!=null}">
+	  <div v-if="modalState">
+	    <transition name="modal">
+	      <div class="modal-mask">
+	        <div class="modal-wrapper">
+	          <div class="modal-dialog">
+	            <div class="modal-content">
+	              <div class="modal-header" style="background: #1d71ab;">
+	              	<h4 class="modal-title" style="color: white;">Cập nhật giỏ hàng thành công </h4>
+	                <button type="button" @click="modalState=false" style="background: transparent;border: none;float: right;color: white;">
+	                  <span >x</span>
+	                </button>
+	                
+	              </div>
+	              <div class="modal-body">
+	
+	              	<div class="product-thumbs row">
+	              		<div class="thumbs col-md-3">
+							<img src="product-1.jpg" th:src="@{'/images/'+${product.getImage()}}">
+						</div>
+						<div class="col-md-9">
+							<b th:text="${product.getProductName()}"></b><br>
+							<b>Số lượng: </b><span th:text="${item?.getQuantity()}"></span><br>
+							<b>Thành tiền: </b><span th:text="${item?.getAmount()+'&nbsp;VNĐ'}"></span><br>
+	
+						</div>
+	              	</div>               
+	              </div>
+	               <div class="modal-footer">
+	                <a class="btn btn-primary" @click="modalState=false" style="color: white;">Tiếp tục mua sắm</a>
+	                <a class="btn btn-danger" @click="modalState=false" style="color: white;" th:href="@{/cart}">Thanh toán</a>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </transition>
+	  </div>
+	 </div>
+	
 	<!--Main-->
 	<div class="content row">
 		<div class="box col-md-12 product-preview">
@@ -34,7 +72,7 @@
 				<div class="col-md-4">
 					<div class="box row">
 						<div class="col-md-3 product-thumbs">
-							<div class="thumbs" th:each="imageList : ${imageList}">
+							<div class=" thumbs" th:each="imageList : ${imageList}">
 								<img src="../../static/images/img-feature-1.jpg" th:src="@{'/images/'+${imageList}}">
 							</div>
 							
@@ -48,7 +86,7 @@
 					</div>
 				</div>
 				<div class="col-md-7">
-					<form class="box row product-info" method="POST" th:action="@{/cart/addtocart}">
+					<form class="box row product-info" method="POST" th:action="@{/cart/addtocart}" id="frm">
 						<div class="product-name">
 							<p class="name" th:text="${product.getProductName()}"></p>
 							<input name="productName" th:value="${product.getProductName()}" hidden="true"/>
@@ -64,15 +102,16 @@
 							
 							
 							<div>
-								<label>Giá: </label><span th:text="${product.getPrice()}"></span>&nbsp;VNĐ
-								<input name="price" th:value="${product.getPrice()}" hidden="true"/>
+								<label>Giá: </label><span th:text="${product.getPrice().toString()}"></span>&nbsp;VNĐ
+								<input name="price"  th:value="${product.getPrice()}" hidden="true"/>
+								
 							</div>											
 							<div class="quantity-block">
 								<div class="amount">
 									<div class="btn btn-group" id="quantity-block">
-										<button type="button" class="btn btn-primary" id="decreasement" onclick="increaseNdecrease(-1)">-</button>
+										<button type="button" class="btn btn-primary" id="decreasement" v-on:click="decrease">-</button>
 										<input type="text" name="quantity" id="quantity" v-model="quantity" />
-										<button type="button" class="btn btn-primary" id="increasement" onclick="increaseNdecrease(1)">+</button>
+										<button type="button" class="btn btn-primary" id="increasement" v-on:click="increase">+</button>
 									</div>
 								</div>
 								<button type="submit" class="btn btn-primary add-to-cart">Chọn mua</button>
@@ -130,32 +169,64 @@
 	<div th:insert="components/general/footer::footer"></div>
 </body>
 <script type="text/javascript">
-	var owl = $('.owl-carousel');
-	owl.owlCarousel({
-    items:1,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:10000,
-    autoplayHoverPause:true
-});
-$('.play').on('click',function(){
-    owl.trigger('play.owl.autoplay',[10000])
-})
-$('.stop').on('click',function(){
-    owl.trigger('stop.owl.autoplay')
-})
+		var owl = $('.owl-carousel');
+		owl.owlCarousel({
+	    items:1,
+	    loop:true,
+	    margin:10,
+	    autoplay:true,
+	    autoplayTimeout:10000,
+	    autoplayHoverPause:true
+	});
+	$('.play').on('click',function(){
+	    owl.trigger('play.owl.autoplay',[10000])
+	})
+	$('.stop').on('click',function(){
+	    owl.trigger('stop.owl.autoplay')
+	})
 
 </script>
 <script>
-	var sl = new Vue({
-		el: '#quantity-block',
-		data:{quantity: 1}			
+	new Vue({
+		el: '#frm',
+		data:{
+			quantity: 1,
+			
+		},
+		methods:{
+			increase:function(event)
+			{
+				this.quantity++;
+				
+			},
+			decrease:function(event)
+			{
+				if(this.quantity>=2)
+				this.quantity--;
+				
+			}
+		}
 	});
-	function increaseNdecrease(i)
-	{
-		parseInt(i);
-		sl.quantity+=i;
-	}
+	
+	
+		
+</script>
+
+<script type="text/javascript">
+	new Vue ({
+		el:'#app',
+		data: {
+			modalState: false,
+		},
+		methods:{
+			changeState:function()
+			{
+				this.modalState=true;
+			}
+		},
+		beforeMount(){
+			this.changeState();
+		}
+	})
 </script>
 </html>

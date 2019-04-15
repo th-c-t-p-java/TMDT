@@ -58,8 +58,6 @@ public class Product {
     }
 
     public BigDecimal getPrice() {
-    	Double tmp = (price.doubleValue()*(100-discount))/100.0;
-    	price = new BigDecimal(tmp);
         return price;
     }
 

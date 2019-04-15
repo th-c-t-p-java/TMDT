@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.web.demo.common.Constants;
 import com.web.demo.mapper.CartItemMapper;
 import com.web.demo.mapper.CustomerMapper;
 import com.web.demo.mapper.ProductMapper;
@@ -35,15 +36,12 @@ public class MainController {
 		{
 			
 			request.getSession().setAttribute("userID", 11);
-				
 			
 			ProductMapper mapper = ConnectDB.getInstance().getSession().getMapper(ProductMapper.class);
 			List<Product> hotDealProduct = new ArrayList<Product>();
 			List<Product> productForYou = new ArrayList<Product>();
 			//Product pro= new Product();
-			try {
-				
-				
+			try {								
 				hotDealProduct = mapper.selectByCatalogId(6,6);
 				productForYou = mapper.selectByCatalogId(7,6);
 
@@ -66,6 +64,7 @@ public class MainController {
 			List<Product> relateProduct = new ArrayList<Product>();
 			Product product = new Product();
 			try {
+				
 				product = mapper.selectByPrimaryKey(id);
 				String[] imageList= product.getImageList();
 				Object[] details = (Object[])product.getDescription();
@@ -74,30 +73,34 @@ public class MainController {
 				model.addAttribute("details",details);
 				model.addAttribute("imageList",imageList);
 				model.addAttribute("relateProduct",relateProduct);
+				model.addAttribute("message",request.getSession().getAttribute("message"));
+				if(request.getSession().getAttribute("message") == Constants.UPDATE_SUCCESS)
+				{					
+					CartItem item = (CartItem)request.getSession().getAttribute("cartItem");
+					System.out.print(item.getAmount());
+					System.out.print(item.getProductName());
+					System.out.print(item.getQuantity());
+					model.addAttribute("item",item);
+				}	
+				
 			}
 			finally {
 				ConnectDB.getInstance().getSession().close();
+				request.getSession().removeAttribute("message");
+				request.getSession().removeAttribute("cartItem");
+			
 			}			
 			return "/components/detail";			
 		}
 		@RequestMapping("/cart")
-		//@ResponseBody
 		public String cart(Model model,HttpServletRequest request) throws Exception
 		{
 			
 			Cart cart = new Cart();
-			if(request.getSession().getAttribute("userID")==null)
-			{
-				cart = CartUtils.getCartInSession(request);
-			}			 
-			else
-			{
-				Integer userID = Integer.parseInt(request.getSession().getAttribute("userID").toString());
-				cart = CartUtils.getCartInDB(request,userID);
-			}
-								
-			List<CartItem> cartItemLst = new ArrayList<CartItem>(cart.getCart().values());
 			
+			cart = CartUtils.loadCart(request);
+			
+			List<CartItem> cartItemLst = new ArrayList<CartItem>(cart.getCart().values());
 			model.addAttribute("cartItemLst",cartItemLst);
 			model.addAttribute("totalItem",cartItemLst.size());
 			model.addAttribute("totalPrice", cart.getTotal());			

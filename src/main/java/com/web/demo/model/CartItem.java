@@ -1,7 +1,8 @@
 package com.web.demo.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 
 public class CartItem {
 	public CartItem()
@@ -16,6 +17,16 @@ public class CartItem {
 		this.productId= null;
 		this.quantity= null;		
 		
+	}
+	public CartItem(Integer customerId,Integer productId,Integer quantity,BigDecimal amount, Integer insertUser, Date insertDate)
+	{
+		this.customerId = customerId;
+		this.productId = productId;
+		this.quantity = quantity;
+		this.amount = amount;
+		this.insertUser =insertUser;
+		this.insertDate = insertDate;
+		this.isEnable = true;
 	}
 	    
     private Integer id;
@@ -108,8 +119,8 @@ public class CartItem {
     }
 
    
-    public Double getAmount() {
-        return amount.doubleValue();
+    public BigDecimal getAmount() {
+        return amount;
     }
 
     
@@ -117,7 +128,7 @@ public class CartItem {
     	
         this.amount = amount;
     }
-
+	
     
     public Integer getInsertUser() {
         return insertUser;

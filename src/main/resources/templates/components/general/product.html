@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -10,7 +10,7 @@
 		<div class="content-wrap">	        					
 			<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}"/>
 			<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
-			<div class="product-price" th:text="${product?.getPrice()}"> <span class="regular-price">1200$</span></div>     					
+			<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
 		</div>
 	</div>
 

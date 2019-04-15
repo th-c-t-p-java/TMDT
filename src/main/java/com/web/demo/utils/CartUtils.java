@@ -9,32 +9,42 @@ import com.web.demo.model.Cart;
 import com.web.demo.model.CartItem;
 
 public class CartUtils {
-
-	public static Cart getCartInSession(HttpServletRequest request)
+	
+	public static Cart loadCart(HttpServletRequest request) throws Exception
 	{
-		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		Cart cart = getCart(request);
 		if (cart == null)
 		{
 			cart = new Cart();
-			request.getSession().setAttribute("cart", cart);			
+					
+		}
+		if(request.getSession().getAttribute("userID")==null)
+		{
+			return cart;
+		}
+		else
+		{
+			CartItemMapper mapper= ConnectDB.getInstance().getSession().getMapper(CartItemMapper.class);
+			List<CartItem> cartItems = mapper.selectByCustomerId((Integer)request.getSession().getAttribute("userID"));
+			
+			// Chậm
+			for(CartItem item:cartItems)
+			{
+				cart.getCart().put(item.getProductId(), item);
+				cart.Total(item.getAmount());
+			}
 		}
 		
+		request.getSession().setAttribute("cart", cart);	
 		return cart;
 	}
-	public static Cart getCartInDB(HttpServletRequest request,Integer userID) throws Exception
+	public static Cart getCart(HttpServletRequest request)
 	{
 		Cart cart = (Cart) request.getSession().getAttribute("cart");
 		if (cart == null)
 		{
 			cart = new Cart();
 			request.getSession().setAttribute("cart", cart);			
-		}
-		
-		CartItemMapper mapper= ConnectDB.getInstance().getSession().getMapper(CartItemMapper.class);
-		List<CartItem> cartItems = mapper.selectByCustomerIdTest(userID);
-		for(CartItem item:cartItems)
-		{
-			cart.getCart().put(item.getProductId(), item);
 		}
 		return cart;
 	}

@@ -48,11 +48,11 @@
 			        		<div class="box row">
 				        		<img class="thumbs" src="../../static/images/product-2.jpg" th:src="@{'/images/'+ ${item.getImage()}}"/>
 				        		<div class="info col-md-5">
-				        			<p class="name"><a  href="#" th:href="@{detail}" th:text="${item.getProductName()}"></a>&nbsp;&nbsp;<span class="sale badge badge-warning">17%</span></p> 
-				        			<p class="price"><label>Giá tiền: </label><span th:text="${item.getAmount()+'&nbsp;VND'}"></span></p>
-				        			<!-- <p class="regular-price">17.000 VND</p> -->
+				        			<p class="name"><a  href="#" th:href="@{detail(id=${item?.getProductId()})}" th:text="${item.getProductName()}"></a>&nbsp;&nbsp;<span class="sale badge badge-warning">17%</span></p> 
+				        			<p class="price"><label>Giá tiền: </label><span th:text="${'&nbsp;'+item.getAmount()+'&nbsp;VNĐ'}"></span></p>
+				        			<!-- <p class="regular-price">17.000 VNĐ</p> -->
 				        			     	
-				        			<p class="action"><a class="act-delete" href="#">Xóa</a><a class="act-save-for-later" href="#">Để mua sau</a></p>
+				        			<p class="action"><a class="act-delete" th:href="@{/cart/delete(id=${item?.getProductId()})}">Xóa</a><a class="act-save-for-later" href="#">Để mua sau</a></p>
 				        			
 				        		</div>
 				        		<div class="quantity-wrap col-md-5">
@@ -73,11 +73,11 @@
 		        	<div class="box">
 		        		<div class="payment-box row">
 				        	<div class="payment-price col-md-12">
-				        		Tạm tính:<span style="float: right" th:text="${totalPrice}+'&nbsp;VND'"></span><hr>
+				        		Tạm tính: <span style="float: right" th:text="${totalPrice}+'&nbsp;VNĐ'"></span><hr>
 				        	</div>
 
 				        	<div class="payment-price col-md-12">
-				        		Tổng tiền: <span style="float: right; font-size: 20px; color: #fe3834;" th:text="${totalPrice}+'&nbsp;VND'"></span>
+				        		Tổng tiền: <span style="float: right; font-size: 20px; color: #fe3834;" th:text="${totalPrice}+'&nbsp;VNĐ'"></span>
 				        		<br><span style="font-size: 12px;">(Đã bao gồm thuế VAT)</span>
 				        	</div>
 				        </div>

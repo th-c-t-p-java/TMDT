@@ -2,7 +2,7 @@ package com.web.demo.controller;
 
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,15 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.demo.common.Constants;
-import com.web.demo.mapper.CartItemMapper;
-import com.web.demo.mapper.CustomerMapper;
 import com.web.demo.mapper.ProductMapper;
 import com.web.demo.model.Cart;
 import com.web.demo.model.CartItem;
-import com.web.demo.model.Customer;
-import com.web.demo.model.Product;
 
-import com.web.demo.utils.CartUtils;
+import com.web.demo.model.Product;
+import com.web.demo.service.Impl.CartServiceImpl;
 import com.web.demo.utils.ConnectDB;
 
 @Controller
@@ -36,6 +33,10 @@ public class MainController {
 		{
 			
 			request.getSession().setAttribute("userID", 11);
+			if(request.getSession().getAttribute("userID")!=null)
+			{
+				CartServiceImpl.loadCart(request);
+			}
 			
 			ProductMapper mapper = ConnectDB.getInstance().getSession().getMapper(ProductMapper.class);
 			List<Product> hotDealProduct = new ArrayList<Product>();
@@ -92,20 +93,25 @@ public class MainController {
 			}			
 			return "/components/detail";			
 		}
+		@SuppressWarnings("unchecked")
 		@RequestMapping("/cart")
-		public String cart(Model model,HttpServletRequest request) throws Exception
+		@ResponseBody
+		public Cart cart(Model model,HttpServletRequest request) throws Exception
 		{
 			
-			Cart cart = new Cart();
+			/*Cart cart = new Cart();
 			
-			cart = CartUtils.loadCart(request);
+			cart = CartUtils.getCart(request);
 			
 			List<CartItem> cartItemLst = new ArrayList<CartItem>(cart.getCart().values());
 			model.addAttribute("cartItemLst",cartItemLst);
 			model.addAttribute("totalItem",cartItemLst.size());
-			model.addAttribute("totalPrice", cart.getTotal());			
+			model.addAttribute("totalPrice", cart.getTotal());		*/	
 			
-			return "/components/cart";
+			//return "/components/cart";
+			Cart cart = new Cart();
+			cart.setCart((HashMap<Integer,CartItem>)request.getSession().getAttribute("cart"));
+			return cart;
 		}
 		@RequestMapping("/sign-in")
 		public String signin()

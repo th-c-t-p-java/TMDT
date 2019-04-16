@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.web.demo.common.Constants;
 import com.web.demo.model.Cart;
 import com.web.demo.model.CartItem;
-import com.web.demo.utils.CartUtils;
+import com.web.demo.service.Impl.CartServiceImpl;
 
 @Controller
 @RequestMapping("/cart")
@@ -37,8 +37,8 @@ public class CartController {
 		item.setImage(image);
 		item.setProductName(productName);
 		Cart cart = new Cart();		
-		cart = CartUtils.getCart(request);				
-		Integer rowAffected = cart.addItemToCart(item);
+		//cart = CartUtils.getCart(request);				
+		Integer rowAffected = cart.addItemToCart(request,item);
 		System.out.print(rowAffected);
 		if(rowAffected <= 0)
 		{
@@ -50,7 +50,6 @@ public class CartController {
 			request.getSession().setAttribute("cartItem", item);
 			
 		}
-		request.getSession().setAttribute("cart", cart);
 		response.sendRedirect("/detail?id="+productId);
 		//return item.getAmount().toString();
 		
@@ -58,7 +57,7 @@ public class CartController {
 	@RequestMapping(value="/delete")
 	public void delete(@RequestParam("id") Integer productId,HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		Cart cart = CartUtils.loadCart(request);
+		Cart cart = CartServiceImpl.loadCart(request);
 		CartItem item = cart.getCartItem(productId);
 		cart.deleteCartItem(item);
 		

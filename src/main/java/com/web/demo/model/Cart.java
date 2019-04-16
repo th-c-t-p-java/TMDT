@@ -10,69 +10,49 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.web.demo.mapper.CartItemMapper;
 import com.web.demo.model.CartItem;
+import com.web.demo.service.Impl.CartServiceImpl;
 import com.web.demo.utils.ConnectDB;
 public class Cart {
 	
 	private HashMap<Integer,CartItem> _cart;
-	private long _total;
 	
 	public Cart()
 	{
 		_cart = new HashMap<Integer,CartItem>();
-		_total= 0;
 	}
-	public CartItem getCartItem(Integer itemId)
+	
+	public void setCart(HashMap<Integer, CartItem> cart)
 	{
-		return _cart.get(itemId);
+		this._cart =cart;
 	}
-	public Integer addItemToCart(HttpServletRequest request,CartItem item) throws Exception
-	{
-		Integer rowsAffected = 0;
-		Cart cart = (Cart) request.getSession().getAttribute("cart");
-		if(cart!=null && cart.getCart().containsKey(item.getProductId()))
-		{
-			rowsAffected = editItem(item);
-			
-		}
-		else
-		{
-			rowsAffected = insertItem(item);
-		}
-		return rowsAffected;
-	}
-
-	public void setCart(HashMap<Integer,CartItem> cart)
-	{
-		this._cart = cart;
-	}
-	public HashMap<Integer,CartItem> getCart()
+	public HashMap<Integer, CartItem>getCart()
 	{
 		return this._cart;
 	}
 	
-	public void setTotal(Integer id)
+	
+	
+	
+	public Integer addItemToCart(HttpServletRequest request,CartItem item) throws Exception
 	{
-		if(this._cart!=null)
+		Integer rowsAffected = 0;
+		this._cart = CartServiceImpl.getCart(request);
+		if(this._cart.isEmpty() == true && this._cart.containsKey(item.getProductId()))
 		{
-			
-			CartItem item =_cart.get(id);
-			
-			this._total += item.getAmount().longValue();
+			rowsAffected = editItem(item);
 		}
+		else
+		{
+			rowsAffected = insertItem(item);
+			
+		}
+		request.getSession().setAttribute("cart", this._cart);
+		return rowsAffected;
 	}
 	
-	public void Total(BigDecimal amount)
+	public void setCartItem(CartItem item)
 	{
-		if(_cart!=null)
-		{
-			this._total+=amount.longValue();
-		}
-		
-	}
-	
-	public BigDecimal getTotal()
-	{
-		return new BigDecimal(this._total);
+		this._cart.put(item.getProductId(), item);
 	}
 	private int editItem(CartItem item) throws Exception
 	{
@@ -85,6 +65,7 @@ public class Cart {
 				{
 					CartItemMapper mapper=session.getMapper(CartItemMapper.class);
 					rowsAffected = mapper.updateQuantityById(item.getId(),item.getAmount().longValue(),item.getQuantity());
+					System.out.print(rowsAffected);
 					session.commit(true);
 				}				
 			

@@ -27,16 +27,16 @@ import com.web.demo.utils.ConnectDB;
 public class MainController {
 	
 	
+		CartServiceImpl cartService = new CartServiceImpl();
 		@RequestMapping("/")
 		//@ResponseBody
 		public String index(Model model,HttpServletRequest request) throws Exception
 		{
 			
-			request.getSession().setAttribute("userID", 11);
-			if(request.getSession().getAttribute("userID")!=null)
-			{
-				CartServiceImpl.loadCart(request);
-			}
+			//request.getSession().setAttribute("userID", 11);
+			
+			Cart cart = cartService.createCart(request);
+			request.getSession().setAttribute("cart", cart);
 			
 			ProductMapper mapper = ConnectDB.getInstance().getSession().getMapper(ProductMapper.class);
 			List<Product> hotDealProduct = new ArrayList<Product>();
@@ -78,9 +78,6 @@ public class MainController {
 				if(request.getSession().getAttribute("message") == Constants.UPDATE_SUCCESS)
 				{					
 					CartItem item = (CartItem)request.getSession().getAttribute("cartItem");
-					System.out.print(item.getAmount());
-					System.out.print(item.getProductName());
-					System.out.print(item.getQuantity());
 					model.addAttribute("item",item);
 				}	
 				
@@ -93,25 +90,28 @@ public class MainController {
 			}			
 			return "/components/detail";			
 		}
-		@SuppressWarnings("unchecked")
 		@RequestMapping("/cart")
-		@ResponseBody
-		public Cart cart(Model model,HttpServletRequest request) throws Exception
+		//@ResponseBody
+		public String cart(Model model,HttpServletRequest request) throws Exception
 		{
 			
-			/*Cart cart = new Cart();
+			Cart cart = new Cart();
 			
-			cart = CartUtils.getCart(request);
-			
+			cart = cartService.loadCart(request);			
 			List<CartItem> cartItemLst = new ArrayList<CartItem>(cart.getCart().values());
 			model.addAttribute("cartItemLst",cartItemLst);
 			model.addAttribute("totalItem",cartItemLst.size());
-			model.addAttribute("totalPrice", cart.getTotal());		*/	
+			model.addAttribute("totalPrice",cartService.Total(cart));		
+			if(request.getSession().getAttribute("message") == Constants.UPDATE_SUCCESS)
+			{
+				CartItem item = (CartItem)request.getSession().getAttribute("cartItem");
+				model.addAttribute("item", item);
+				request.getSession().removeAttribute("cartItem");
+				request.getSession().removeAttribute("message");
+			}
 			
-			//return "/components/cart";
-			Cart cart = new Cart();
-			cart.setCart((HashMap<Integer,CartItem>)request.getSession().getAttribute("cart"));
-			return cart;
+			return "/components/cart";
+			
 		}
 		@RequestMapping("/sign-in")
 		public String signin()

@@ -25,44 +25,8 @@
 	<!--HEADER-->
 	<div th:insert="components/general/header::header"></div>
 	
-	<div id="app" th:if="${message!=null}">
-	  <div v-if="modalState">
-	    <transition name="modal">
-	      <div class="modal-mask">
-	        <div class="modal-wrapper">
-	          <div class="modal-dialog">
-	            <div class="modal-content">
-	              <div class="modal-header" style="background: #1d71ab;">
-	              	<h4 class="modal-title" style="color: white;">Cập nhật giỏ hàng thành công </h4>
-	                <button type="button" @click="modalState=false" style="background: transparent;border: none;float: right;color: white;">
-	                  <span >x</span>
-	                </button>
-	                
-	              </div>
-	              <div class="modal-body">
-	
-	              	<div class="product-thumbs row">
-	              		<div class="thumbs col-md-3">
-							<img src="product-1.jpg" th:src="@{'/images/'+${product.getImage()}}">
-						</div>
-						<div class="col-md-9">
-							<b th:text="${product.getProductName()}"></b><br>
-							<b>Số lượng: </b><span th:text="${item?.getQuantity()}"></span><br>
-							<b>Thành tiền: </b><span th:text="${item?.getAmount()+'&nbsp;VNĐ'}"></span><br>
-	
-						</div>
-	              	</div>               
-	              </div>
-	               <div class="modal-footer">
-	                <a class="btn btn-primary" @click="modalState=false" style="color: white;">Tiếp tục mua sắm</a>
-	                <a class="btn btn-danger" @click="modalState=false" style="color: white;" th:href="@{/cart}">Thanh toán</a>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-	    </transition>
-	  </div>
+	<div id="app" th:if="${message!=null}" th:insert="components/general/modal::modal">
+		
 	 </div>
 	
 	<!--Main-->
@@ -91,7 +55,7 @@
 							<p class="name" th:text="${product.getProductName()}"></p>
 							<input name="productName" th:value="${product.getProductName()}" hidden="true"/>
 							<p id="sku">SKU: <span th:text="${product.getId()}"></span></p>
-							<input name="id" th:value="${product.getId()}" hidden="true"/>
+							<input name="productId" th:value="${product.getId()}" hidden="true"/>
 						</div>
 						<input name="image" hidden="true" th:value="${product.getImage()}"/>
 						<div class="more-inf" >
@@ -136,29 +100,10 @@
 			        </div><hr/>
 			        <div class="loader-area owl-carousel">
 			        	<div class="product-list row">
-			        		<div th:each="relateProduct: ${relateProduct}" class="product-wrap col-md-2">
-			        			<div class="product">
-			        				<span class="badge badge-danger">-10%</span>
-			        				<div class="content-wrap">	        					
-			        					<img class="product-img" src="../../static/images/product-1.jpg" th:src="@{'/images/'+${relateProduct?.getImage()}}"/>  
-			        					<div class="product-name"><a href="detail.html" th:href="@{detail(id=${relateProduct.getId()})}"  th:text="${relateProduct.getProductName()}"></a></div> 
-			        					
-			        					<div class="product-price" th:text="${relateProduct.getPrice()}"> <span class="regular-price" >1000$</span></div>     					
-			        				</div>
-			        			</div>
-			        		</div>
+			        		<div th:each="product: ${relateProduct}" class="product-wrap col-md-2" th:insert="components/general/product::product-fragment"></div>
 			        	</div>
 			        	<div class="product-list row">
-			        		<div th:each="relateProduct: ${relateProduct}" class="product-wrap col-md-2">
-			        			<div class="product">
-			        				<span class="badge badge-danger">-10%</span>
-			        				<div class="content-wrap">	        					
-			        					<img class="product-img" src="../../static/images/product-1.jpg" th:src="@{'/images/'+${relateProduct?.getImage()}}"/>  
-			        					<div class="product-name"><a href="detail.html" th:href="@{detail(id=${relateProduct.getId()})}" th:text="${relateProduct.getProductName()}"></a></div> 
-			        					<div class="product-price" th:text="${relateProduct.getPrice()}"><span class="regular-price" >1000$</span></div>     					
-			        				</div>
-			        			</div>
-			        		</div>
+			        		<div th:each="product: ${relateProduct}" class="product-wrap col-md-2" th:insert="components/general/product::product-fragment"></div>
 			        	</div>		
 			        </div>
 				</div>

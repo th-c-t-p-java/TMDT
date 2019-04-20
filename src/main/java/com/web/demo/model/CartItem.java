@@ -170,4 +170,22 @@ public class CartItem {
     public void setIsEnable(Boolean isEnable) {
         this.isEnable = isEnable;
     }
+    public CartItem getItem()
+    {
+    	CartItem item = new CartItem();
+    	item.setAmount(this.amount);
+    	item.setCustomerId(this.customerId);
+    	item.setId(this.id);
+    	item.setImage(this.image);
+    	item.setInsertDate(this.insertDate);
+    	item.setInsertUser(this.insertUser);
+    	item.setIsEnable(this.isEnable);
+    	item.setModifyDate(this.modifyDate);
+    	item.setModifyUser(this.modifyUser);
+    	item.setProductId(this.productId);
+    	item.setProductName(this.productName);
+    	item.setQuantity(this.quantity);
+    	
+    	return item;
+    }
 }

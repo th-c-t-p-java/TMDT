@@ -1,0 +1,57 @@
+.shipping-header{
+	box-shadow:-1px -9px 20px 0px;
+	margin-bottom: 15px;
+}
+
+.bs-wizard-step{
+	padding: 0px;
+}
+.bs-wizard-step .progress{
+	height: 6px;
+    margin: 20px 0;
+    
+    position: relative;
+    
+    left: 50%;
+}
+.bs-wizard-stepnum{
+
+}
+
+.bs-wizard-stepnum span{
+	font-size: 14px;
+}
+
+.bs-wizard-dot{
+
+    font-size: 15px;
+    color: black;
+    background: #e9ecef;
+    border: none;
+    line-height: 26px;
+    -webkit-box-shadow: #666 0 0 2px;
+    box-shadow: #666 0 0 2px;
+    border-radius: 50%;
+    padding: 1px 10px;
+    position: absolute;
+    top:33px;
+    left:45%;
+}
+.login-with{
+	display: inline-block;
+     margin: 10px 20px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.login-with a{
+	
+	color: white;
+}
+.row>.progress{
+	height: 2px
+}
+
+.active{
+	background: #00b6f0;
+	color: white;
+}

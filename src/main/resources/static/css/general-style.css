@@ -196,6 +196,7 @@ input[type="text"]{
     font-weight: 500;
     padding: 0;
     text-align: left;
+    font-size: 12px;
 }
 .product-list .product-wrap .product .content-wrap .regular-price{
 	font-size: 11px;

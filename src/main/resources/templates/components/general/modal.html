@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="app" >
+	  <div v-if="modalState" th:fragment="modal">
+	    <transition name="modal">
+	      <div class="modal-mask">
+	        <div class="modal-wrapper">
+	          <div class="modal-dialog">
+	            <div class="modal-content">
+	              <div class="modal-header" style="background: #1d71ab;">
+	   
+	              	<h3 class="modal-title" style="color: white;">Thông báo </h3>
+	                <button type="button" class="btn btn-danger" @click="modalState=false" style="border: none;float: right;color: white;padding: 3px 13px;border-radius:3px;">
+	                  <span >x</span>
+	                </button>
+	                
+	              </div>
+	              <div class="modal-body"  th:if="${message =='update success'}">
+	              <h4 class="modal-title" style="color: black; margin-bottom: 10px;">Đã thêm vào giỏ hàng</h4>
+					
+	              	<div class="product-thumbs row">
+	              		<div class="thumbs col-md-3">
+							<img src="product-1.jpg" th:src="@{'/images/'+${product.getImage()}}">
+						</div>
+						<div class="col-md-9">
+							<b th:text="${item?.getProductName()}"></b><br>
+							<b>Số lượng: </b><span th:text="${item?.getQuantity()}"></span><br>
+							<b>Thành tiền: </b><span th:text="${item?.getAmount()+'&nbsp;VNĐ'}"></span><br>
+	
+						</div>
+	              	</div>               
+	              </div>
+	               <div class="modal-body" th:if="${message =='update failed'}">
+						<p>Cập nhật giỏ hàng thất bại</p>   
+	              </div>
+	              
+	               <div class="modal-footer"  th:if="${message =='update success'}">
+	                <a class="btn btn-primary" @click="modalState = false" style="color: white;">Tiếp tục mua sắm</a>
+	                <a class="btn btn-danger" @click="modalState = false" style="color: white;" th:href="@{/cart}">Thanh toán</a>
+	              </div>
+	              <div class="modal-footer"  th:if="${message =='update failed'}">
+	                <a class="btn btn-primary" @click="modalState = false" style="color: white;">Đóng</a>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </transition>
+	  </div>
+	 </div>
+
+</body>
+</html>

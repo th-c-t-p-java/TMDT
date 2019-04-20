@@ -52,15 +52,15 @@
 				        			<p class="price"><label>Giá tiền: </label><span th:text="${'&nbsp;'+item.getAmount()+'&nbsp;VNĐ'}"></span></p>
 				        			<!-- <p class="regular-price">17.000 VNĐ</p> -->
 				        			     	
-				        			<p class="action"><a class="act-delete" th:href="@{/cart/delete(id=${item?.getProductId()})}">Xóa</a><a class="act-save-for-later" href="#">Để mua sau</a></p>
+				        			<p class="action"><a class="act-delete" th:href="@{/cart/delete(id=${item?.getProductId()})}">Xóa</a></p>
 				        			
 				        		</div>
-				        		<div class="quantity-wrap col-md-5">
-				        			<div class="quantity-block btn-group">
-					        			<button type="button" class="btn btn-primary btn-minus">-</button>
-					        			<input type="text" name="quantity" class="quantity" th:value="${item.getQuantity()}">
-					        			<button type="button" class="btn btn-primary btn-plus">+</button>
-				        			</div>
+				        		<div class="quantity-wrap col-md-5 info">
+				        			<p class="quantity-block btn-group">
+					        			
+					        			<label>Số lượng: </label><input type="text" name="quantity" class="quantity" th:value="${item.getQuantity()}" disabled/>
+					        			
+				        			</p>
 				        		</div>
 			        		</div>
 			        		<hr>

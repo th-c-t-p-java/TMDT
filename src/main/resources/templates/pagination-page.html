@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://www.thymeleaf.org" >
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" th:href="@{https://use.fontawesome.com/releases/v5.7.1/css/all.css}" crossorigin="anonymous"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/font-awesome.css" th:href="@{/css/font-awesome.css}"/>
+	
+	<link rel="stylesheet" type="text/css" href="../static/bootstrap/bootstrap.min.css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+	<script src="../static/bootstrap/bootstrap.js" th:src="@{/bootstrap/bootstrap.js}"/></script>
+	<script src="../static/bootstrap/jquery.min.js" th:src="@{/bootstrap/jquery.min.js}"/></script>
+	<script src="../static/bootstrap/bootstrap.min.js"th:src="@{/bootstrap/bootstrap.min.js}"/></script>
+	<link rel="stylesheet" type="text/css" href="../static/css/general-style.css" th:href="@{/css/general-style.css}"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/style-header.css" th:href="@{/css/style-header.css}"/>
+	<link rel="stylesheet" type="text/css" href="../static/css/style-footer.css" th:href="@{/css/style-footer.css}"/>
+	<!-- INDEX Page -->
+	<link rel="stylesheet" type="text/css" href="../static/css/style-index.css" th:href="@{/css/style-index.css}"/>
+	
+	<link rel="stylesheet" type="text/css" href="../static/css/owl.carousel.css" th:href="@{/css/owl.carousel.css}" />
+	<script type="text/javascript" src="../static/js/owl.carousel.js" th:src="@{/js/owl.carousel.js}"></script>
+	<link rel="icon" href="../static/images/tiki-logo.png" th:href="@{/images/tiki-logo.png}" />
+	<title>TiKi.VN</title>
+</head>
+<body>
+	<!--HEADER-->
+	<div th:insert="components/general/header::header"></div>
+	<!--START BODY--> 
+	<div class="content row" >
+		<!--START VERTICAL MENU -->
+		<div class="col-md-3" style="z-index: 100;width: 100%;background: #e2e2e2;">
+			<ul class="menu" th:fragment="menu" style="position: fixed; top:0">
+				<li class="menu-item">
+					<a href="#"><i class="fas fa-mobile-alt"></i> Điện thoại - Máy tính bảng</a>
+					<div class="sub-menu">
+						<ul >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-tv"></i> Điện tử - Điện lạnh</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-headphones"></i> Phụ kiện - Thiết bị số</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-laptop"></i> Laptop - Thiết bị IT</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-camera"></i> Máy ảnh - Quay phim</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-bolt"></i> Điện gia dụng</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">					
+					<a href="#"><i class="fas fa-home"></i> Nhà cửa - Đời sống</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">					
+					<a href="#"><i class="fas fa-spray-can"></i> Hàng tiêu dùng - Thực phẩm</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">					
+					<a href="#"><i class="fas fa-baby"></i> Đồ chơi - Mẹ và bé</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">					
+					<a href="#"><i class="fas fa-heart"></i> Làm đẹp - Sức khỏe</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-tshirt"></i> Thời trang - Phụ kiện</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-futbol"></i> Thể thao - Dã ngoại</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">				
+					<a href="#"><i class="fas fa-motorcycle"></i> Xe máy, Ô tô, Xe đạp</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-globe"></i> Hàng quốc tế</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-book-open"></i> Sách, VPP, Quà tặng</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="menu-item">
+					
+					<a href="#"><i class="fas fa-box-open"></i> Voucher, Dịch vụ, Thể thao</a>
+					<div class="sub-menu">
+						<ul  >
+							<li>
+								<a href="#">Lorem ipsum dolor amet</a>
+							</li>
+							<li>
+								<a href="#">Neque porro quisquam est qui </a>
+							</li>
+							<li>
+								<a href="#">Consectetur adipiscing</a>
+							</li>
+							<li>
+								<a href="#">Sed ut perspiciatis unde omnis</a>
+							</li>
+							<li>
+								<a href="#">Nemo enim ipsam</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-9 wrap-product-list">
+			<div class="deal-header">
+	            <div class="icon-header"><i class="fas fa-dollar-sign "></i></div>
+	            <div class="deal-header-content-wrap">
+	            	<div class="title">Tiki Deal</div>
+		            <div class="text">
+		                Cập nhật hàng giờ tất cả những deal giảm giá đặc biệt trên Tiki. Hãy bookmark trang này và quay lại thường xuyên để không bỏ lỡ bạn nhé!
+		            </div>
+	            </div>
+	            
+	        </div><hr/>
+	        <div class="loader-area">
+	        	<div class="product-list row">
+	      
+	        		<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+					<div class="product col-md-2" th:fragment="product-fragment">
+						<span class="badge badge-danger">-10%</span>
+						<div class="content-wrap">	        					
+							<img class="product-img" src="../static/images/product-1.jpg" th:src="@{'/images/'+${product?.getImage()}}" style="width: 150px;height: 150px;"/>
+							<div class="product-name"><a href="components/detail.html" th:href="@{detail(id=${product?.getId()})}" th:text="${product.getProductName()}"></a></div> 
+							<div class="product-price" th:text="${product?.getPrice()}+'&nbsp;VNĐ'"><span class="regular-price" >12000000&nbsp;VND</span></div>     					
+						</div>
+					</div>
+
+	        	        		
+	        	</div>	        	
+	        </div>
+	        <ul class="pagination" style=" background: #189eff;
+    display: inline-flex;float: right;margin-right: 25px;">
+			  <li style="padding: 5px 10px;"><a href="#">1</a></li>
+			  <li style="padding: 5px 10px;"><a href="#">2</a></li>
+			  <li style="padding: 5px 10px;"><a href="#">3</a></li>
+			  <li style="padding: 5px 10px;"><a href="#">4</a></li>
+			  <li style="padding: 5px 10px;"><a href="#">5</a></li>
+			  <li style="padding: 5px 10px;"><a href="#">6</a></li>
+
+			</ul>
+				  
+		</div>
+		<!--END VERTICAL MENU -->
+		<!--<div class="col-md-9">
+
+				<!--START CAROUSEL
+					<div class="slider-wrap row">
+						<div class="owl-carousel col-md-12">
+						    <a href="#"><img style="height:495px" class="carousel-item" src="../static/images/slider-img1.jpg"  th:src="@{/images/slider-img1.jpg}"/></a>
+						    <a href="#"><img style="height:495px" class="carousel-item" src="../static/images/slider-img2.jpg"  th:src="@{/images/slider-img2.jpg}"/></a>
+						    <a href="#"><img style="height:495px" class="carousel-item" src="../static/images/slider-img3.jpg" th:src="@{/images/slider-img3.jpg}"/></a>
+						    <a href="#"><img style="height:495px" class="carousel-item" src="../static/images/slider-img4.jpg" th:src="@{/images/slider-img4.jpg}"/></a>
+						    <a href="#"><img style="height:495px" class="carousel-item" src="../static/images/slider-img5.jpg" th:src="@{/images/slider-img5.jpg}"/></a>
+		
+						</div>
+
+					</div>
+				<!--END CAROUSEL
+				<!--START RIGHT MINI BANNER
+				<!--END RIGHT MINI BANNER
+
+		</div>	-->
+		<!-- START PRODUCT //GENERAL CSS -->
+
+		
+		<!-- END PRODUCT-->
+	</div>
+	<!--END BODY-->
+	<!--START FOOTER-->
+	<div th:insert="components/general/footer::footer"></div> 
+	<!--END FOOTER-->
+</body>
+<!--OWL CAROUSEL SCRIPT -->
+<script type="text/javascript">
+	var owl = $('.owl-carousel');
+owl.owlCarousel({
+    items:1,
+    loop:true,
+    margin:10,
+    autoplay:true,
+    autoplayTimeout:10000,
+    autoplayHoverPause:true
+});
+$('.play').on('click',function(){
+    owl.trigger('play.owl.autoplay',[10000])
+})
+$('.stop').on('click',function(){
+    owl.trigger('stop.owl.autoplay')
+})
+
+</script>
+
+</html>

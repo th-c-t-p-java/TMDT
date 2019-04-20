@@ -97,7 +97,7 @@ public interface CartItemMapper {
     int updateByPrimaryKey(CartItem record);
     
     int updateQuantityById(@Param("id")Integer id,@Param("amount") long amount,@Param("quantity") Integer quantity);
-    
+    //int updateQuantityById(CartItem item);
     int updateIsEnableById(@Param("id") Integer id);
     
 }

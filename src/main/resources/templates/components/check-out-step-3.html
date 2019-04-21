@@ -11,7 +11,7 @@
 	<script src="../../static/bootstrap/bootstrap.min.js"th:src="@{/bootstrap/bootstrap.min.js}"/></script>
 
 	<link rel="stylesheet" type="text/css" href="../../static/css/style-check-out.css" th:href="@{/css/style-check-out.css}"/>
-	<link rel="stylesheet" type="text/css" href="../../static/css/style-check-out-step-2.css" th:href="@{/css/style-check-out-step-2.css}"/>
+	<link rel="stylesheet" type="text/css" href="../../static/css/style-check-out-step-3.css" th:href="@{/css/style-check-out-step-3.css}"/>
 	<!-- Detail Page -->
 
 	<link rel="icon" href="../../static/images/tiki-logo.png" th:href="@{/images/tiki-logo.png}" />
@@ -64,21 +64,92 @@
 	        </div>
 	    </div>
 	</div>
-	<div class="wrap">
+	<div class="wrap" style="margin-bottom: 60px">
 		<div class="container">
 			<div class="row">
-				<h3>1. Hình thức giao hàng</h3>
-				<form class="col-md-9">					
+				
+				<form class="col-md-8">	
+					<h3 class="title-check-out">1. Hình thức giao hàng</h3>				
 					<div class="check-out-border">
-						<div>
-							<input type="radio" name="shipping-plan"><label>Giao hàng tiêu chuẩn</label>		
-						</div>
-						<div>
-							<input type="radio" name="shipping-plan"><label>Giao hàng nhanh</label>		
-						</div>
-										
+
+						<label class="lbl-container">Giao hàng tiêu chuẩn
+						  <input type="radio" checked="checked" name="radio">
+						  <span class="checkmark"></span>
+						</label>
+						<label class="lbl-container">Giao hàng nhanh. (Giao nhanh trong vòng 2h)
+						  <input type="radio" checked="checked" name="radio">
+						  <span class="checkmark"></span>
+						</label>
 					</div>
+					<h3 class="title-check-out">2. Thanh toán bằng Tiki xu</h3>				
+					<div class="check-out-border">
+						<label class="lbl-container">Thanh toán bằng Tiki xu.
+						  <input type="checkbox" name="paymentMethod">
+						  <span class="checkmark-checkbox"></span>
+						</label>
+					</div>
+					<h3 class="title-check-out">3. Hình thức thanh toán</h3>				
+					<div class="check-out-border">
+						<label class="lbl-container">Thanh toán bằng tiền mặt khi nhận hàng.
+						  <input type="radio" name="paymentBy">
+						  <span class="checkmark"></span>
+						</label>
+						<label class="lbl-container">Thanh toán bằng thẻ ATM nội địa.
+						  <input type="radio" name="paymentBy">
+						  <span class="checkmark"></span>
+						</label>
+						<label class="lbl-container">Thanh toán bằng thẻ quốc tế Master card, Visa, JCB.
+						  <input type="radio" name="paymentBy">
+						  <span class="checkmark"></span>
+						</label>
+						<label class="lbl-container">Thanh toán bằng Ví Momo.
+						  <input type="radio" name="paymentBy">
+						  <span class="checkmark"></span>
+						</label>
+						<label class="lbl-container">Thanh toán bằng ZaloPay.
+						  <input type="radio" name="paymentBy">
+						  <span class="checkmark"></span>
+						</label>
+					</div>
+					<label class="lbl-container" style="margin-bottom: 20px">Xuất thông tin hóa đơn.
+						<input type="checkbox" name="getInfoOrder">
+						<span class="checkmark-checkbox"></span>
+					</label>
+					<button type="submit" class="btn btn-danger col-md-12">Thanh toán</button>
+					<span style="font-size: 12px">(Vui lòng kiểm tra kĩ đơn hàng trước khi đặt mua)</span>
 				</form>
+				<div class="col-md-4">
+					<h3 class="title-check-out">Thông tin người nhận</h3>
+					<div class="check-out-border">
+						<p style="display: inline-block; margin-bottom: 0px; font-weight: bold;">Địa chỉ giao hàng </p>	
+						<a href="#" style="float: right">Sửa</a>						
+						<hr/>	
+						<div class="row order-info" >
+							<label class="col-md-3" >Họ Tên:</label><p class="col-md-9">Phạm Trương Chí Hiếu</p>
+							<label class="col-md-3" >Địa chỉ:</label><p class="col-md-9">42 Đoàn Hồng Phước, Hòa Thạnh, Tân Phú, tp.HCM</p>
+							<label class="col-md-3" >SĐT:</label><p class="col-md-9">0777169443</p>
+						</div>					
+					</div>
+					<h3 class="title-check-out">Thông tin đơn hàng</h3>
+					<div class="check-out-border">
+						<p style="display: inline-block; margin-bottom: 0px; font-weight: bold;">Đơn hàng</p>	
+						<a href="#" style="float: right">Sửa</a>						
+						<hr/>	
+						<div class="row order-info">
+							<a class="col-md-5" href="#" >Thám tử lừng danh Conan tập 95</a><p class="col-md-2">1</p><p class="col-md-5" style="text-align: right;">20000 VNĐ</p>
+						</div><hr/>	
+						<div class="row order-info">
+							<label class="col-md-4">Tạm tính:</label>
+							<p class="col-md-8" style="float: right;text-align: right;">20000 VNĐ</p>
+							<label class="col-md-4">Phí vận chuyển</label>
+							<p class="col-md-8" style="float: right;text-align: right;">10000 VNĐ</p>
+						</div><hr/>
+						<div class="row order-info">
+							<label class="col-md-4">Tổng tiền:</label>
+							<p class="col-md-8" style="float: right;text-align: right;">30000 VNĐ</p>
+						</div>		
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

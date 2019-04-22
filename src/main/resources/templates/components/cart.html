@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="../../static/css/style-header.css" th:href="@{/css/style-header.css}"/>
 	<link rel="stylesheet" type="text/css" href="../../static/css/style-footer.css" th:href="@{/css/style-footer.css}"/>
 	<link rel="stylesheet" type="text/css" href="../../static/css/style-cart.css" th:href="@{/css/style-cart.css}"/>
-
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" th:src="@{https://cdn.jsdelivr.net/npm/vue/dist/vue.js}"></script>
 
 	<link rel="icon" href="../../static/images/tiki-logo.png" th:href="@{/images/tiki-logo.png}" />
 	<title>Giỏ hàng TiKi</title>
@@ -32,6 +32,8 @@
         <form class="col-md-12">
         	<div class="row">
         		<div class="cart-wrap col-md-9">
+        		<div th:if="${totalItem}<=0"><p id="alert" class="alert alert-danger">Bạn chưa có sản phẩm nào trong giỏ hàng.</p></div>
+        			
 		        	<div class="deal-header">
 			            <div class="icon-header"><i class="fas fa-shopping-cart "></i></div>
 			            <div class="deal-header-content-wrap">
@@ -82,7 +84,11 @@
 				        	</div>
 				        </div>
 		        	</div>
-		        	<button class="col-md-12 btn btn-danger btn-payment-checkout">Thanh toán</button>
+		        	<p th:if="${totalItem}>0"><a class="col-md-12 btn btn-danger btn-payment-checkout" th:href="@{/check-out}">Thanh toán</a></p>
+		        	
+		        	
+		        	
+		        	
 		        	<div class="box">
 		        		<div class="payment-box row">
 				        	<div class="payment-price col-md-12">
@@ -113,5 +119,20 @@
 		parseInt(i);
 		sl.quantity+=i;
 	}
+	/*var alert = new Vue({
+		el: '#alert',
+		data:{display: 'none'},
+		methods:{
+			showAlert:function()
+			{
+				this.alert = 'block';
+			}
+		}
+	});
+	function increaseNdecrease(i)
+	{
+		parseInt(i);
+		sl.quantity+=i;
+	}*/
 </script>
 </html>

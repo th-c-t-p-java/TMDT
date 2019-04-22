@@ -138,6 +138,16 @@ public class MainController {
 		{
 			return "/components/manager";
 		}
+		@RequestMapping("/check-out")
+		public String order( Model model,HttpServletRequest request)
+		{
+			if(request.getSession().getAttribute("userID")==null)
+			{
+				return "/components/check-out";
+			}
+			
+			return "/components/check-out-step-2";
+		}
 		
 		
 		

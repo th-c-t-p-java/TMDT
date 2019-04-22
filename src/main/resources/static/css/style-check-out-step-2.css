@@ -13,3 +13,8 @@
 .panel-body div span {
 	font-weight: bold;
 }
+
+.panel-body div input {
+	margin-bottom: 10px;
+}
+

@@ -51,8 +51,27 @@
 	        </div>
 	      </div>
 	    </transition>
+	    <script type="text/javascript">
+			new Vue ({
+				el:'#app',
+				data: {
+					modalState: false,
+				},
+				methods:{
+					changeState:function()
+					{
+						this.modalState=true;
+					}
+				},
+				beforeMount(){
+					this.changeState();
+				}
+			})
+		</script>
 	  </div>
+	  
 	 </div>
+	 
 
 </body>
 </html>

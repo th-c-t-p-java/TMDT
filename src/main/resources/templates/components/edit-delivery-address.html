@@ -12,6 +12,7 @@
 
 	<link rel="stylesheet" type="text/css" href="../../static/css/style-check-out.css" th:href="@{/css/style-check-out.css}"/>
 	<link rel="stylesheet" type="text/css" href="../../static/css/style-check-out-step-2.css" th:href="@{/css/style-check-out-step-2.css}"/>
+	<link rel="stylesheet" type="text/css" href="../../static/css/style-delivery-address.css" th:href="@{/css/style-delivery-address.css}"/>
 	<!-- Detail Page -->
 
 	<link rel="icon" href="../../static/images/tiki-logo.png" th:href="@{/images/tiki-logo.png}" />
@@ -72,14 +73,9 @@
 	<!-- End flash message -->
 
 		<div class="row row-style-2">
-		    <form id="form-address" class="col-md-12" action="#" method="POST">
-		        <div class="container">
-		            <h5 class="visible-md-block visible-lg-block">Chọn địa chỉ giao hàng có sẵn bên dưới:</h5>
-		        </div>
-		        <div class="container">
-			        <p class="other">Bạn muốn giao hàng đến địa chỉ khác?<a id="addNewAddress" href="javascript:void(0)">Thêm địa chỉ giao hàng mới </a></p>
-			    </div>
-		        <div class="row-address-list row">
+		    <div id="form-address" class="col-md-6" action="/checkout/shipping/saving_shipping_address" method="post">
+		       
+		        <div class="row-address-list row" style="font-size: 13px; height: 350px;">
 
 		            <div class="col-lg-12 col-md-12 col-sm-12 item" id="item-2014691">
 
@@ -89,30 +85,64 @@
 					        	<h4>Thông tin khách hàng</h4>
 					        	<br/>
 					            <div class="row">
-					            	<span class="col-md-2">Khách hàng:</span><p class="col-md-10">Phạm Trương Chí Hiếu</p>
+					            	<span class="col-md-3">Khách hàng:</span><p class="col-md-9">Phạm Trương Chí Hiếu</p>
 					            </div>
 					             <div class="row">
-					            	<span class="col-md-2">Điện thoại:</span><p class="col-md-10">077716943</p>
+					            	<span class="col-md-3">Điện thoại:</span><p class="col-md-9">077716943</p>
+					            </div>
+					            
+					            <div class="row">
+					            	<span class="col-md-3">Email:</span><p class="col-md-9">ozzzkonzzzo@gmail.com</p>
 					            </div>
 					            <div class="row">
-					            	<span class="col-md-2">Địa chỉ:</span><p class="col-md-10">42 Đoàn Hồng Phước, Hòa Thạnh, Tân Phú, Tp.HCM, Việt Nam</p>
-					            </div>
-					            <div class="row">
-					            	<span class="col-md-2">Email:</span><p class="col-md-10">ozzzkonzzzo@gmail.com</p>
+					            	<span class="col-md-3">Địa chỉ:</span><p class="col-md-9">42 Đoàn Hồng Phước, Hòa Thạnh, Tân Phú, Tp.HCM, Việt Nam</p>
 					            </div>
 					            <br/>
-					            <p class="action col-md-10" style="float: right; padding: 0">
-						                <button class="btn btn-primary" type="button" data-id="2014691" admicro-data-event="GiaoDenDiaChiNay" admicro-data-auto="1" admicro-data-order="false">Giao đến địa chỉ này</button>
-						                <button class="btn btn-danger" type="button" data-id="2014691">Sửa</button>
-						        </p>
+					           
 					        </div>
-					        <a href="#" style="float: right; clear: both;">Mặc định</a>
+					        
 					    </div>
 					</div>
-		        </div>
+		        </div>		   
+			</div>
+			<div id="form-address" class="col-md-6" action="/checkout/shipping/saving_shipping_address" method="post">
+		       
+		        <form class="row-address-list row" style="font-size: 13px; height: 350px;" method="POST" action="#">
 
-		   
-		</form>
+		            <div class="col-lg-12 col-md-12 col-sm-12 item" id="item-2014691">
+
+					    <div class="panel panel-default address-item is-default">
+					    	
+					        <div class="panel-body">
+					        	<h4>Thông tin người nhận</h4>
+					        	<br/>
+					            <div class="row">
+					            	<span class="col-md-3">Người nhận:</span><input type="text" class="col-md-9" name="receiverName" />
+					            </div>
+					             <div class="row">
+					            	<span class="col-md-3">Điện thoại:</span><input type="text" class="col-md-9" name="receiverPhoneNumber" />
+					            </div>
+					            
+					            <div class="row">
+					            	<span class="col-md-3">Email:</span><input type="text" class="col-md-9" name="receiverEmail" />
+					            </div>
+					            <div class="row">
+					            	<span class="col-md-3">Địa chỉ:</span><textarea name="receiverAddress" class="col-md-9"></textarea>
+					            </div>
+					            <br/>
+					            <div class="action row">
+					            	<a class="col-md-3" href="#">Mặc định</a>
+					            	<div class="col-md-9" style="padding-right: 0px;">
+					            		<button class="btn btn-primary" type="submit" style="float: right;">Giao đến địa chỉ này</button>	
+					            	</div>
+						                	                
+						        </div>
+					        </div>
+					        
+					    </div>
+					</div>
+		        </form>		   
+			</div>
 		</div>
 	</div>
 </div>

@@ -101,6 +101,10 @@ public class Order {
      *
      * @mbg.generated Sat Mar 23 15:08:44 ICT 2019
      */
+    private String shippingAddress;
+    
+    private String receiversPhoneNumber;
+    
     public Integer getId() {
         return id;
     }
@@ -331,5 +335,25 @@ public class Order {
      */
     public void setModifyUser(Integer modifyUser) {
         this.modifyUser = modifyUser;
+    }
+    
+    public void setShippingAdress(String shippingAddress)
+    {
+    	this.shippingAddress = shippingAddress;
+    }
+    
+    public String getShippingAddress()
+    {
+    	return this.shippingAddress;
+    }
+    
+    public void setReceiversPhoneNumber(String receiversPhoneNumber)
+    {
+    	this.receiversPhoneNumber = receiversPhoneNumber;
+    }
+    
+    public String getReceiversPhoneNumber()
+    {
+    	return this.receiversPhoneNumber;
     }
 }

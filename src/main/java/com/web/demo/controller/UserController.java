@@ -1,41 +1,54 @@
 package com.web.demo.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.web.demo.common.Constants;
+import com.web.demo.mapper.CustomerMapper;
 import com.web.demo.model.Customer;
-import com.web.demo.service.Impl.UserServiceImpl;
+import com.web.demo.model.CustomerExample;
+import com.web.demo.utils.ConnectDB;
 
+/*modelAttribute*/
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	
-	@RequestMapping(value="/login",method = RequestMethod.GET)
+	@RequestMapping(value="/user-login",method = RequestMethod.POST)
 	@ResponseBody
-	String login(@ModelAttribute("user") Customer userInf, Model model,HttpSession session) throws Exception
+	void login(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
-		UserServiceImpl userService = new UserServiceImpl();
-		Map<String,Object> map = new HashMap<>();
-		map.putAll(userService.login(userInf.getLoginName(), userInf.getPassword()));
-		if (map.get("status")==Constants.TRUE)
+		SqlSession session = ConnectDB.getInstance().getSession();
+		CustomerMapper mapper = session.getMapper(CustomerMapper.class);
+		//Customer customer = new Customer();
+		CustomerExample example = new CustomerExample();
+		String loginName = request.getParameter("loginName").toString();
+		String password = request.getParameter("password").toString();
+		example.createCriteria().andLoginNameEqualTo(loginName).andPasswordEqualTo(password);
+		List<Customer> lstCustomer = new ArrayList<Customer>();
+		lstCustomer = mapper.selectByExample(example);
+		if(lstCustomer.isEmpty())
 		{
-			session.setAttribute("status",map.get("status"));
-			session.setAttribute("customer", map.get("customer"));
+			response.sendRedirect("/check-out");
 		}
-		//modelMap.put("loginName",session.)
-		Customer customer = new Customer();
-		customer = (Customer)session.getAttribute("customer");
-		model.addAttribute("loginname",customer.getLoginName());
-		return "login";
+		else
+		{
+			if(lstCustomer.size()==1)
+			{
+				Integer userId = lstCustomer.get(0).getId();
+				request.getSession().setAttribute("userID", userId);
+				response.sendRedirect("/check-out-step-2");
+			}
+		}
+		
 	}
 }

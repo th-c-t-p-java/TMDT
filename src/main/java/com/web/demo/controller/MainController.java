@@ -138,14 +138,22 @@ public class MainController {
 		{
 			return "/components/manager";
 		}
+		
 		@RequestMapping("/check-out")
-		public String order( Model model,HttpServletRequest request)
+		public String checkOut( Model model,HttpServletRequest request)
 		{
-			if(request.getSession().getAttribute("userID")==null)
+			request.getSession().setAttribute("checkoutOrder","");
+			if(request.getSession().getAttribute("userID") ==null)
 			{
 				return "/components/check-out";
 			}
 			
+			return "/components/check-out-step-2";
+		}
+		
+		@RequestMapping("/check-out-step-2")
+		public String checkOutStepTwo( Model model,HttpServletRequest request)
+		{	
 			return "/components/check-out-step-2";
 		}
 		

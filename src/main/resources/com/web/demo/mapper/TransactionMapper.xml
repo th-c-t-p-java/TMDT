@@ -17,9 +17,6 @@
     <result column="sercurity" jdbcType="VARCHAR" property="sercurity" />
     <result column="insert_date" jdbcType="DATE" property="insertDate" />
     <result column="modify_date" jdbcType="DATE" property="modifyDate" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -96,7 +93,7 @@
       This element was generated on Sat Mar 23 15:08:44 ICT 2019.
     -->
     id, status, user_id, amount, payment, payment_info, message, sercurity, insert_date, 
-    modify_date, address, phone_number, email
+    modify_date
   </sql>
   <select id="selectByExample" parameterType="com.web.demo.model.TransactionExample" resultMap="BaseResultMap">
     <!--
@@ -156,13 +153,11 @@
     -->
     insert into transaction (status, user_id, amount, 
       payment, payment_info, message, 
-      sercurity, insert_date, modify_date, 
-      address, phone_number, email
+      sercurity, insert_date, modify_date
       )
     values (#{status,jdbcType=BIT}, #{userId,jdbcType=INTEGER}, #{amount,jdbcType=DOUBLE}, 
       #{payment,jdbcType=VARCHAR}, #{paymentInfo,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
-      #{sercurity,jdbcType=VARCHAR}, #{insertDate,jdbcType=DATE}, #{modifyDate,jdbcType=DATE}, 
-      #{address,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}
+      #{sercurity,jdbcType=VARCHAR}, #{insertDate,jdbcType=DATE}, #{modifyDate,jdbcType=DATE}
       )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.web.demo.model.Transaction" useGeneratedKeys="true">
@@ -198,16 +193,7 @@
         insert_date,
       </if>
       <if test="modifyDate != null">
-        modify_date,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="phoneNumber != null">
-        phone_number,
-      </if>
-      <if test="email != null">
-        email,
+        modify_date
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -236,16 +222,7 @@
         #{insertDate,jdbcType=DATE},
       </if>
       <if test="modifyDate != null">
-        #{modifyDate,jdbcType=DATE},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="phoneNumber != null">
-        #{phoneNumber,jdbcType=INTEGER},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
+        #{modifyDate,jdbcType=DATE}
       </if>
     </trim>
   </insert>
@@ -296,17 +273,9 @@
         insert_date = #{record.insertDate,jdbcType=DATE},
       </if>
       <if test="record.modifyDate != null">
-        modify_date = #{record.modifyDate,jdbcType=DATE},
+        modify_date = #{record.modifyDate,jdbcType=DATE}
       </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
-      </if>
-      <if test="record.phoneNumber != null">
-        phone_number = #{record.phoneNumber,jdbcType=INTEGER},
-      </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=VARCHAR},
-      </if>
+     
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -328,10 +297,7 @@
       message = #{record.message,jdbcType=VARCHAR},
       sercurity = #{record.sercurity,jdbcType=VARCHAR},
       insert_date = #{record.insertDate,jdbcType=DATE},
-      modify_date = #{record.modifyDate,jdbcType=DATE},
-      address = #{record.address,jdbcType=VARCHAR},
-      phone_number = #{record.phoneNumber,jdbcType=INTEGER},
-      email = #{record.email,jdbcType=VARCHAR}
+      modify_date = #{record.modifyDate,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -369,17 +335,9 @@
         insert_date = #{insertDate,jdbcType=DATE},
       </if>
       <if test="modifyDate != null">
-        modify_date = #{modifyDate,jdbcType=DATE},
+        modify_date = #{modifyDate,jdbcType=DATE}
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="phoneNumber != null">
-        phone_number = #{phoneNumber,jdbcType=INTEGER},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
+     
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -398,10 +356,7 @@
       message = #{message,jdbcType=VARCHAR},
       sercurity = #{sercurity,jdbcType=VARCHAR},
       insert_date = #{insertDate,jdbcType=DATE},
-      modify_date = #{modifyDate,jdbcType=DATE},
-      address = #{address,jdbcType=VARCHAR},
-      phone_number = #{phoneNumber,jdbcType=INTEGER},
-      email = #{email,jdbcType=VARCHAR}
+      modify_date = #{modifyDate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

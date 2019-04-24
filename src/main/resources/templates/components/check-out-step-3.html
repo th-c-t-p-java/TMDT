@@ -18,52 +18,7 @@
 	<title>Chi tiết sản phẩm</title>
 </head>
 <body>
-	<div class="shipping-header">
-	    <div class="container">
-	        <div class="row row-style-1">
-	            <div class="col-lg-2 visible-lg-block">
-	                <a href="/">
-	                    <img style="height:130px" src="../../static/images/tiki-logo.png"/>
-	                </a>
-	            </div>
-	            <div class="col-lg-8" style="padding-top: 30px;">
-	                <div class="row bs-wizard">
-
-	                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 bs-wizard-step">
-	                        <div class="text-center bs-wizard-stepnum">
-	                            <span>Đăng Nhập</span>
-	                        </div>
-	                        <div class="progress active"><div class="progress-bar"></div></div>
-	                        <span class="bs-wizard-dot active">1</span>
-	                    </div>
-
-	                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 bs-wizard-step disabled">
-
-	                        <div class="text-center bs-wizard-stepnum">
-	                            <span class="hidden-xs">Địa Chỉ Giao Hàng</span>
-	                            <span class="visible-xs-inline-block">Địa Chỉ</span>
-	                        </div>
-	                        <div class="progress active"><div class="progress-bar "></div></div>
-	                        <span class="bs-wizard-dot active">2</span>
-	                    </div>
-
-	                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 bs-wizard-step disabled">
-	                        <div class="text-center bs-wizard-stepnum">
-	                            <span class="hidden-xs">Thanh Toán &amp; Đặt Mua</span>
-	                            <span class="visible-xs-inline-block ">Thanh Toán</span>
-	                        </div>
-	                        
-	                        <span class="bs-wizard-dot active">3</span>
-	                    </div>
-
-	                </div>
-	            </div>
-	            <div class="col-lg-2 visible-lg-block hotline" style="margin-top: 50px;">
-	                <img src="https://salt.tikicdn.com/assets/img/hotline.png" height="42" width="176" alt="">
-	            </div>
-	        </div>
-	    </div>
-	</div>
+	<div th:insert="components/general/header::checkOutHeader"></div>
 	<div class="wrap" style="margin-bottom: 60px">
 		<div class="container">
 			<div class="row">

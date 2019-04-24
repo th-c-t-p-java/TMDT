@@ -31,12 +31,16 @@ public class MainController {
 		@RequestMapping("/")
 		//@ResponseBody
 		public String index(Model model,HttpServletRequest request) throws Exception
-		{
-			
+		{			
 			//request.getSession().setAttribute("userID", 11);
+			//Cart cart = cartService.loadCart(request);
+			if(request.getSession().getAttribute("userID")!=null)
+			{	
+				Cart cart = cartService.loadCart(request);
+				cart = cartService.createCart(request);
+				request.getSession().setAttribute("cart", cart);
+			}
 			
-			Cart cart = cartService.createCart(request);
-			request.getSession().setAttribute("cart", cart);
 			
 			ProductMapper mapper = ConnectDB.getInstance().getSession().getMapper(ProductMapper.class);
 			List<Product> hotDealProduct = new ArrayList<Product>();
@@ -142,9 +146,13 @@ public class MainController {
 		@RequestMapping("/check-out")
 		public String checkOut( Model model,HttpServletRequest request)
 		{
-			request.getSession().setAttribute("checkoutOrder","");
-			if(request.getSession().getAttribute("userID") ==null)
+			//request.getSession().setAttribute("checkoutOrder","");
+			if(request.getSession().getAttribute("userID") == null)
 			{
+				if(request.getSession().getAttribute("message") !=null)
+				{
+					model.addAttribute("message",request.getSession().getAttribute("message"));
+				}
 				return "/components/check-out";
 			}
 			

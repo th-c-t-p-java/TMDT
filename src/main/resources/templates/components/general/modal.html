@@ -51,27 +51,42 @@
 	        </div>
 	      </div>
 	    </transition>
-	    <script type="text/javascript">
-			new Vue ({
-				el:'#app',
-				data: {
-					modalState: false,
-				},
-				methods:{
-					changeState:function()
-					{
-						this.modalState=true;
-					}
-				},
-				beforeMount(){
-					this.changeState();
-				}
-			})
-		</script>
+	    
 	  </div>
 	  
 	 </div>
 	 
+	 <div id="announcementsModal" >
+	  <div v-if="modalState" th:fragment="announcementsModal">
+	    <transition name="modal">
+	      <div class="modal-mask">
+	        <div class="modal-wrapper">
+	          <div class="modal-dialog">
+	            <div class="modal-content">
+	              <div class="modal-header" style="background: #1d71ab;">
+	   
+	              	<h3 class="modal-title" style="color: white;">Thông báo </h3>
+	                <button type="button" class="btn btn-danger" @click="modalState=false" style="border: none;float: right;color: white;padding: 3px 13px;border-radius:3px;">
+	                  <span >x</span>
+	                </button>
+	                
+	              </div>
+	              <div class="modal-body">
+	              		<p th:text="${message}"></p>   
+	              </div>
+	              <div class="modal-footer">
+	                <a class="btn btn-primary" @click="modalState = false" style="color: white;">Đóng</a>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </transition>
+	    
+	  </div>
+	  
+	 </div>
 
 </body>
+
 </html>

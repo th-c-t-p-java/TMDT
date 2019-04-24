@@ -8,61 +8,17 @@
 	<link rel="stylesheet" type="text/css" href="../../static/bootstrap/bootstrap.min.css" th:href="@{/bootstrap/bootstrap.min.css}"/>
 	<script src="../../static/bootstrap/bootstrap.js" th:src="@{/bootstrap/bootstrap.js}"/></script>
 	<script src="../../static/bootstrap/jquery.min.js" th:src="@{/bootstrap/jquery.min.js}"/></script>
-	<script src="../../static/bootstrap/bootstrap.min.js"th:src="@{/bootstrap/bootstrap.min.js}"/></script>
+	<script src="../../static/bootstrap/bootstrap.min.js" th:src="@{/bootstrap/bootstrap.min.js}"/></script>
 
 	<link rel="stylesheet" type="text/css" href="../../static/css/style-check-out.css" th:href="@{/css/style-check-out.css}"/>
 	<!-- Detail Page -->
-
+	<link rel="stylesheet" type="text/css" href="../../static/css/style-modal.css" th:href="@{/css/style-modal.css}"/>
 	<link rel="icon" href="../../static/images/tiki-logo.png" th:href="@{/images/tiki-logo.png}" />
 	<title>Chi tiết sản phẩm</title>
 </head>
 <body>
-	<div class="shipping-header">
-	    <div class="container">
-	        <div class="row row-style-1">
-	            <div class="col-lg-2 visible-lg-block">
-	                <a href="/">
-	                    <img style="height:130px" src="../../static/images/tiki-logo.png" th:src="@{/images/tiki-logo.png}"/>
-	                </a>
-	            </div>
-	            <div class="col-lg-8" style="padding-top: 30px;">
-	                <div class="row bs-wizard">
-
-	                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 bs-wizard-step">
-	                        <div class="text-center bs-wizard-stepnum">
-	                            <span>Đăng Nhập</span>
-	                        </div>
-	                        <div class="progress"><div class="progress-bar"></div></div>
-	                        <span class="bs-wizard-dot active">1</span>
-	                    </div>
-
-	                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 bs-wizard-step disabled">
-
-	                        <div class="text-center bs-wizard-stepnum">
-	                            <span class="hidden-xs">Địa Chỉ Giao Hàng</span>
-	                            <span class="visible-xs-inline-block">Địa Chỉ</span>
-	                        </div>
-	                        <div class="progress"><div class="progress-bar"></div></div>
-	                        <span class="bs-wizard-dot">2</span>
-	                    </div>
-
-	                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 bs-wizard-step disabled">
-	                        <div class="text-center bs-wizard-stepnum">
-	                            <span class="hidden-xs">Thanh Toán &amp; Đặt Mua</span>
-	                            <span class="visible-xs-inline-block">Thanh Toán</span>
-	                        </div>
-	                        
-	                        <span class="bs-wizard-dot">3</span>
-	                    </div>
-
-	                </div>
-	            </div>
-	            <div class="col-lg-2 visible-lg-block hotline" style="margin-top: 50px;">
-	                <img src="https://salt.tikicdn.com/assets/img/hotline.png" height="42" width="176" alt="">
-	            </div>
-	        </div>
-	    </div>
-	</div>
+	<div th:insert="components/general/header::checkOutHeader"></div>
+	<div id="app" th:if="${message !=null}" th:insert="components/general/modal::announcementsModal"></div>
 	<div class="wrap">
 	    <div class="container">	        
 	<h3 class="step-title lg-m-top-15">1. Khách hàng mới / Đăng nhập</h3>
@@ -212,7 +168,8 @@
 	    </div>
 	</div>
 
-	<script type="text/javascript">document.querySelector('input[name=email]').focus()</script>
+	<script type="text/javascript">document.querySelector('input[name=loginName]').focus()</script>
+	<script type="text/javascript" th:if="${message!=null}" th:src="@{/js/modal.js}"></script>
 	</div>
 </div>
 </body>

@@ -55,18 +55,18 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public Cart createCart(HttpServletRequest request) throws Exception {
-		Cart cart = loadCart(request);
+		Cart sessionCart = new Cart();
 		SqlSession session = ConnectDB.getInstance().getSession();
 		try {
 			if(request.getSession().getAttribute("userID")!= null)
 			{
 				CartItemMapper mapper = session.getMapper(CartItemMapper.class);
 				List<CartItem> cartItems = mapper.selectByCustomerId(Integer.parseInt(request.getSession().getAttribute("userID").toString()));
-				if(!cartItems.isEmpty())
-				{
-					Map<Integer, CartItem>tmp = cartItems.stream().collect(Collectors.toMap(CartItem::getProductId, CartItem::getItem));
-					cart.setCart((HashMap<Integer, CartItem>) tmp);
-				}
+				Map<Integer, CartItem> databaseCartItems = cartItems.stream().collect(Collectors.toMap(CartItem::getProductId, CartItem::getItem));
+				//Cart databaseCart = new Cart();
+				sessionCart.setCart((HashMap<Integer,CartItem>)databaseCartItems);
+				//sessionCart = mergeCart(sessionCart,databaseCart);
+				
 						
 			}	
 		}
@@ -74,16 +74,16 @@ public class CartServiceImpl implements CartService{
 			session.close();
 		}
 
-		request.getSession().setAttribute("cart", cart);
-		return cart;
+		request.getSession().setAttribute("cart", sessionCart);
+		return sessionCart;
 	}
 
 	@Override
-	public Integer insert(Cart cart, CartItem item, HttpServletRequest request) throws Exception {
+	public Integer insert(Cart cart, CartItem item) throws Exception {
 		Integer rowsAffected = 0;
 		SqlSession session = ConnectDB.getInstance().getSession();
 		try {
-			if(request.getSession().getAttribute("userID")!=null)
+			if(item.getCustomerId()!=null)
 			{
 				
 				CartItemMapper mapper = session.getMapper(CartItemMapper.class);
@@ -100,21 +100,18 @@ public class CartServiceImpl implements CartService{
 		}
 		this.total+= item.getAmount().longValue();
 		cart.getCart().put(item.getProductId(),item);
-		request.getSession().setAttribute("cart", cart);
+		
 		return rowsAffected;
 	}
 
 	@Override
-	public Integer update(Cart cart,CartItem item, HttpServletRequest request) throws Exception {
+	public Integer update(Cart cart,CartItem item) throws Exception {
 		Integer rowsAffected = 0 ;
 		SqlSession session = ConnectDB.getInstance().getSession();
 		CartItemMapper mapper = session.getMapper(CartItemMapper.class);
 		try {
-			if(request.getSession().getAttribute("userID")!= null)
+			if(item.getCustomerId() != null)
 			{				
-				/*Integer id = item.getId();
-				long amount = item.getAmount().longValue();
-				Integer quantity = item.getQuantity();*/
 				Integer id = cart.getCart().get(item.getProductId()).getId();
 				rowsAffected = mapper.updateQuantityById(id,item.getAmount().longValue(),item.getQuantity());
 				session.commit(true);
@@ -122,7 +119,6 @@ public class CartServiceImpl implements CartService{
 			else
 			{
 				rowsAffected = 1;
-				System.out.print("NO CUSTOMER");
 			}
 				
 		}
@@ -138,12 +134,12 @@ public class CartServiceImpl implements CartService{
 		cart.getCart().put(item.getProductId(), item);
 		this.total += item.getAmount().longValue();
 		//request.getSession().removeAttribute("cart");
-		request.getSession().setAttribute("cart", cart);
+		
 		return rowsAffected;
 	}
 
 	@Override
-	public Integer delete(Cart cart,CartItem item, HttpServletRequest request) throws Exception {
+	public Integer delete(Cart cart,CartItem item) throws Exception {
 		Integer rowsAffected =0;
 		SqlSession session = ConnectDB.getInstance().getSession();
 		try {
@@ -168,7 +164,7 @@ public class CartServiceImpl implements CartService{
 		
 		cart.getCart().remove(item.getProductId());
 		this.total -= item.getAmount().longValue();
-		request.getSession().setAttribute("cart", cart);
+		
 		return rowsAffected;
 	}
 
@@ -181,5 +177,34 @@ public class CartServiceImpl implements CartService{
 		CartItem item = cart.getCart().get(productId);		
 		return item;
 	}
+	@Override
+	public Cart mergeCart(Cart sessionCart, Cart databaseCart) throws Exception
+	{
+
+		if(!sessionCart.getCart().isEmpty() && !databaseCart.getCart().isEmpty())
+		{
+			List<CartItem> lstSessionCartItem = new ArrayList<CartItem>(sessionCart.getCart().values());
+			for(CartItem item : lstSessionCartItem)
+			{
+				if(databaseCart.getCart().containsKey(item.getProductId()))
+				{
+					update(databaseCart,item);
+				}
+				else
+				{
+					insert(databaseCart,item);
+				}			
+			}
+		}
+		else
+		{
+			if(!sessionCart.getCart().isEmpty() && databaseCart.getCart().isEmpty())
+			{
+				return sessionCart;
+			}
+		}
+		return databaseCart;
+	}
+	
 
 }

@@ -41,12 +41,14 @@ public class CartController {
 		Integer rowsAffected = 0;
 		if(cart.getCart().containsKey(item.getProductId())==false||cart.getCart().isEmpty()==true)
 		{
-			rowsAffected = cartService.insert(cart, item, request);
+			rowsAffected = cartService.insert(cart, item);
 		}
 		else
 		{
-			rowsAffected = cartService.update(cart, item, request);
+			rowsAffected = cartService.update(cart, item);
 		}
+		
+		request.getSession().setAttribute("cart", cart);
 		
 		if(rowsAffected <= 0)
 		{
@@ -69,7 +71,7 @@ public class CartController {
 		Cart cart = cartService.loadCart(request);
 		CartItem item = cartService.findItem(cart, productId);
 		Integer rowsAffected =0;
-		rowsAffected = cartService.delete(cart, item, request);
+		rowsAffected = cartService.delete(cart, item);
 		if(rowsAffected <=0)
 		{
 			request.getSession().setAttribute("message", Constants.UPDATE_FAIL);

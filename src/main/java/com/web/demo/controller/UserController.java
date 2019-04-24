@@ -24,7 +24,7 @@ import com.web.demo.utils.ConnectDB;
 public class UserController {
 	
 	@RequestMapping(value="/user-login",method = RequestMethod.POST)
-	@ResponseBody
+	//@ResponseBody
 	void login(HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 		SqlSession session = ConnectDB.getInstance().getSession();
@@ -38,14 +38,16 @@ public class UserController {
 		lstCustomer = mapper.selectByExample(example);
 		if(lstCustomer.isEmpty())
 		{
+			request.getSession().setAttribute("message", "Đăng nhập thất bại !!! Vui lòng kiểm tra lại tên đăng nhập và mật khẩu.");
 			response.sendRedirect("/check-out");
 		}
 		else
 		{
-			if(lstCustomer.size()==1)
+			if(lstCustomer.size() == 1)
 			{
 				Integer userId = lstCustomer.get(0).getId();
 				request.getSession().setAttribute("userID", userId);
+				//response.sendRedirect("/");
 				response.sendRedirect("/check-out-step-2");
 			}
 		}

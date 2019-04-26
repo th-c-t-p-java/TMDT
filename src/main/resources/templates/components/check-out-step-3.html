@@ -18,7 +18,7 @@
 	<title>Chi tiết sản phẩm</title>
 </head>
 <body>
-	<div th:insert="components/general/header::checkOutHeader"></div>
+	<div th:insert="components/general/header::checkOutHeader(step='3')"></div>
 	<div class="wrap" style="margin-bottom: 60px">
 		<div class="container">
 			<div class="row">
@@ -80,9 +80,9 @@
 						<a href="#" style="float: right">Sửa</a>						
 						<hr/>	
 						<div class="row order-info" >
-							<label class="col-md-3" >Họ Tên:</label><p class="col-md-9">Phạm Trương Chí Hiếu</p>
-							<label class="col-md-3" >Địa chỉ:</label><p class="col-md-9">42 Đoàn Hồng Phước, Hòa Thạnh, Tân Phú, tp.HCM</p>
-							<label class="col-md-3" >SĐT:</label><p class="col-md-9">0777169443</p>
+							<label class="col-md-3" >Họ Tên:</label><p class="col-md-9" th:text="${customerInfo.getFullName()}"></p>
+							<label class="col-md-3" >Địa chỉ:</label><p class="col-md-9" th:text="${customerInfo.getAddress()}"></p>
+							<label class="col-md-3" >SĐT:</label><p class="col-md-9" th:text="${customerInfo.getPhoneNumber()}"></p>
 						</div>					
 					</div>
 					<h3 class="title-check-out">Thông tin đơn hàng</h3>
@@ -90,18 +90,23 @@
 						<p style="display: inline-block; margin-bottom: 0px; font-weight: bold;">Đơn hàng</p>	
 						<a href="#" style="float: right">Sửa</a>						
 						<hr/>	
-						<div class="row order-info">
-							<a class="col-md-5" href="#" >Thám tử lừng danh Conan tập 95</a><p class="col-md-2">1</p><p class="col-md-5" style="text-align: right;">20000 VNĐ</p>
+						<div class="wrap" th:each="item : ${orderItems}">
+							<div class="row order-info">
+								<a class="col-md-5" href="#" th:text="${item.getProductName()}"></a><p class="col-md-2" th:text="${item.getQuantity()}"></p><p class="col-md-5" style="text-align: right;" th:text="${item.getAmount()}+'&nbsp;VNĐ'"></p>
+							</div>
 						</div><hr/>	
+						
 						<div class="row order-info">
 							<label class="col-md-4">Tạm tính:</label>
-							<p class="col-md-8" style="float: right;text-align: right;">20000 VNĐ</p>
+							<p class="col-md-8" style="float: right;text-align: right;" th:text="${total}+'&nbsp;VNĐ'"></p>
+							
 							<label class="col-md-4">Phí vận chuyển</label>
-							<p class="col-md-8" style="float: right;text-align: right;">10000 VNĐ</p>
+							<p class="col-md-8" style="float: right;text-align: right;">0 VNĐ</p>
 						</div><hr/>
-						<div class="row order-info">
+						<div class="row order-info" >
 							<label class="col-md-4">Tổng tiền:</label>
-							<p class="col-md-8" style="float: right;text-align: right;">30000 VNĐ</p>
+							
+							<p class="col-md-8" style="float: right;text-align: right;" th:text="${total}+'&nbsp;VNĐ'"></p>
 						</div>		
 					</div>
 				</div>

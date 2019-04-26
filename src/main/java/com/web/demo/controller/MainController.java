@@ -9,39 +9,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.demo.common.Constants;
+import com.web.demo.mapper.CustomerMapper;
 import com.web.demo.mapper.ProductMapper;
 import com.web.demo.model.Cart;
 import com.web.demo.model.CartItem;
-
+import com.web.demo.model.Customer;
 import com.web.demo.model.Product;
 import com.web.demo.service.Impl.CartServiceImpl;
+import com.web.demo.service.Impl.UserServiceImpl;
 import com.web.demo.utils.ConnectDB;
 
 @Controller
 
 public class MainController {
 	
-	
+		UserServiceImpl userService = new UserServiceImpl();
 		CartServiceImpl cartService = new CartServiceImpl();
+		String userName = "Đăng nhập";
+		@ModelAttribute(name="currentUser")
+		public void currentUser(HttpServletRequest request,Model model)
+		{
+			if(request.getSession().getAttribute("userID") == null)
+			{
+				model.addAttribute("currentUser","Đăng nhập");
+			}
+			else
+			{
+				
+				model.addAttribute("currentUser", request.getSession().getAttribute("userName").toString());
+			}
+		}
+		
 		@RequestMapping("/")
 		//@ResponseBody
 		public String index(Model model,HttpServletRequest request) throws Exception
 		{			
-			//request.getSession().setAttribute("userID", 11);
-			//Cart cart = cartService.loadCart(request);
-			if(request.getSession().getAttribute("userID")!=null)
+			/*if(request.getSession().getAttribute("userID")!=null)
 			{	
 				Cart cart = cartService.loadCart(request);
 				cart = cartService.createCart(request);
 				request.getSession().setAttribute("cart", cart);
-			}
-			
-			
+			}			*/
 			ProductMapper mapper = ConnectDB.getInstance().getSession().getMapper(ProductMapper.class);
 			List<Product> hotDealProduct = new ArrayList<Product>();
 			List<Product> productForYou = new ArrayList<Product>();
@@ -152,6 +166,7 @@ public class MainController {
 				if(request.getSession().getAttribute("message") !=null)
 				{
 					model.addAttribute("message",request.getSession().getAttribute("message"));
+					
 				}
 				return "/components/check-out";
 			}
@@ -159,12 +174,30 @@ public class MainController {
 			return "/components/check-out-step-2";
 		}
 		
-		@RequestMapping("/check-out-step-2")
-		public String checkOutStepTwo( Model model,HttpServletRequest request)
+		@RequestMapping("/check-out/step-2")
+		public String checkOutStepTwo( Model model,HttpServletRequest request) throws Exception
 		{	
+			Integer userId= Integer.parseInt(request.getSession().getAttribute("userID").toString());
+			Customer customer = userService.getBaseCustomerInfo(userId);
+			
+			model.addAttribute("customerInfo",customer);
 			return "/components/check-out-step-2";
 		}
-		
+		@RequestMapping("/check-out/step-3")
+		public String checkOutStepThree( Model model,HttpServletRequest request) throws Exception
+		{
+			Integer userId= Integer.parseInt(request.getSession().getAttribute("userID").toString());
+			Customer customer = userService.getBaseCustomerInfo(userId);
+
+			Cart cart = cartService.loadCart(request);
+			
+			List<CartItem> orderItem = new ArrayList<CartItem>(cart.getCart().values());
+			cartService.getTotal();
+			model.addAttribute("customerInfo",customer);
+			model.addAttribute("orderItems", orderItem);
+			model.addAttribute("total", cartService.Total(cart));
+			return "/components/check-out-step-3";
+		}
 		
 		
 

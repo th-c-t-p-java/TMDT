@@ -18,7 +18,7 @@
 	<title>Chi tiết sản phẩm</title>
 </head>
 <body>
-	<div th:insert="components/general/header::checkOutHeader"></div>
+	<div th:replace="components/general/header::checkOutHeader(step='2')"></div>
 	<div class="wrap">
     <div class="container">
         <h3>2. Địa chỉ giao hàng</h3>
@@ -40,25 +40,25 @@
 
 					    <div class="panel panel-default address-item is-default">
 					    	
-					        <div class="panel-body">
+					        <div class="panel-body" >
 					        	<h4>Thông tin khách hàng</h4>
 					        	<br/>
 					            <div class="row">
-					            	<span class="col-md-2">Khách hàng:</span><p class="col-md-10">Phạm Trương Chí Hiếu</p>
+					            	<span class="col-md-2">Khách hàng:</span><p class="col-md-10" th:text="${customerInfo.getFullName()}"></p>
 					            </div>
 					             <div class="row">
-					            	<span class="col-md-2">Điện thoại:</span><p class="col-md-10">077716943</p>
+					            	<span class="col-md-2">Điện thoại:</span><p class="col-md-10" th:text="${customerInfo.getPhoneNumber()}"></p>
 					            </div>
 					            <div class="row">
-					            	<span class="col-md-2">Địa chỉ:</span><p class="col-md-10">42 Đoàn Hồng Phước, Hòa Thạnh, Tân Phú, Tp.HCM, Việt Nam</p>
+					            	<span class="col-md-2">Địa chỉ:</span><p class="col-md-10" th:text="${customerInfo.getAddress()}"></p>
 					            </div>
 					            <div class="row">
-					            	<span class="col-md-2">Email:</span><p class="col-md-10">ozzzkonzzzo@gmail.com</p>
+					            	<span class="col-md-2">Email:</span><p class="col-md-10" th:text="${customerInfo.getEmail()}"></p>
 					            </div>
 					            <br/>
 					            <p class="action col-md-10" style="float: right; padding: 0">
-						                <button class="btn btn-primary" type="button" data-id="2014691" admicro-data-event="GiaoDenDiaChiNay" admicro-data-auto="1" admicro-data-order="false">Giao đến địa chỉ này</button>
-						                <button class="btn btn-danger" type="button" data-id="2014691">Sửa</button>
+						                <a class="btn btn-primary" th:href="@{/check-out/step-3}">Giao đến địa chỉ này</a>
+						                <a class="btn btn-danger" >Sửa</a>
 						        </p>
 					        </div>
 					        <a href="#" style="float: right; clear: both;">Mặc định</a>

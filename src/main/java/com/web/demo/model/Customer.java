@@ -482,4 +482,9 @@ public class Customer {
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
     }
+    
+    public String getFullName() {
+    	String fullName = this.firstName +" " + this.lastName;
+    	return fullName;
+    }
 }

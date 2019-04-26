@@ -55,7 +55,7 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public Cart createCart(HttpServletRequest request) throws Exception {
-		Cart sessionCart = new Cart();
+		Cart cart = new Cart();
 		SqlSession session = ConnectDB.getInstance().getSession();
 		try {
 			if(request.getSession().getAttribute("userID")!= null)
@@ -64,7 +64,10 @@ public class CartServiceImpl implements CartService{
 				List<CartItem> cartItems = mapper.selectByCustomerId(Integer.parseInt(request.getSession().getAttribute("userID").toString()));
 				Map<Integer, CartItem> databaseCartItems = cartItems.stream().collect(Collectors.toMap(CartItem::getProductId, CartItem::getItem));
 				//Cart databaseCart = new Cart();
-				sessionCart.setCart((HashMap<Integer,CartItem>)databaseCartItems);
+				cart.setCart((HashMap<Integer,CartItem>)databaseCartItems);
+				
+				//sessionCart = mergeCart(sessionCart,databaseCart);
+				//sessionCart.setCart((HashMap<Integer,CartItem>)databaseCartItems);
 				//sessionCart = mergeCart(sessionCart,databaseCart);
 				
 						
@@ -74,8 +77,8 @@ public class CartServiceImpl implements CartService{
 			session.close();
 		}
 
-		request.getSession().setAttribute("cart", sessionCart);
-		return sessionCart;
+		//request.getSession().setAttribute("cart", cart);
+		return cart;
 	}
 
 	@Override
@@ -178,16 +181,19 @@ public class CartServiceImpl implements CartService{
 		return item;
 	}
 	@Override
-	public Cart mergeCart(Cart sessionCart, Cart databaseCart) throws Exception
+	public Cart mergeCart(Cart sessionCart, Cart databaseCart,Integer customerId) throws Exception
 	{
-
-		if(!sessionCart.getCart().isEmpty() && !databaseCart.getCart().isEmpty())
+		
+		if(sessionCart!=null && databaseCart != null)
 		{
 			List<CartItem> lstSessionCartItem = new ArrayList<CartItem>(sessionCart.getCart().values());
 			for(CartItem item : lstSessionCartItem)
 			{
+				item.setCustomerId(customerId);
+				item.setInsertUser(customerId);
 				if(databaseCart.getCart().containsKey(item.getProductId()))
 				{
+					
 					update(databaseCart,item);
 				}
 				else
@@ -198,7 +204,7 @@ public class CartServiceImpl implements CartService{
 		}
 		else
 		{
-			if(!sessionCart.getCart().isEmpty() && databaseCart.getCart().isEmpty())
+			if(sessionCart != null && databaseCart == null)
 			{
 				return sessionCart;
 			}

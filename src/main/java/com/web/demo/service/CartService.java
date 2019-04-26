@@ -21,5 +21,5 @@ public interface CartService {
 	
 	public void remove(HttpServletRequest request) throws Exception;
 	
-	public Cart mergeCart(Cart sessionCart, Cart databaseCart) throws Exception;
+	public Cart mergeCart(Cart sessionCart, Cart databaseCart,Integer customerId) throws Exception;
 }

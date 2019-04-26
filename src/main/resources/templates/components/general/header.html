@@ -93,7 +93,7 @@
 				</a>
 				<a href="components/sign-in.html" th:href="@{sign-in}" class="col-md-4">
 					<img src="/images/User_32px.png">
-					Đăng xuất
+					<span th:text="${currentUser}"></span>
 				</a>
 				<a href="../cart.html" th:href="@{cart}" class="col-md-4" style="padding: 15px 5px; border: 3px solid white; border-radius: 3px;">
 					<img src="/images/Shopping Cart_32px.png"/>
@@ -130,7 +130,7 @@
 	</header>
 	<!-- CHECK-OUT HEADER --> 
 	<div class="shipping-header">
-	    <div class="container" th:fragment="checkOutHeader">
+	    <div class="container" th:fragment="checkOutHeader(step)">
 	        <div class="row row-style-1">
 	            <div class="col-lg-2 visible-lg-block">
 	                <a href="/">
@@ -144,7 +144,8 @@
 	                        <div class="text-center bs-wizard-stepnum">
 	                            <span>Đăng Nhập</span>
 	                        </div>
-	                        <div class="progress"><div class="progress-bar"></div></div>
+	                        <div th:if="${step}  < 2" class="progress"><div class="progress-bar"></div></div>
+	                        <div th:if="${step}  >= 2" class="progress active" ><div class="progress-bar"></div></div>
 	                        <span class="bs-wizard-dot active">1</span>
 	                    </div>
 
@@ -154,8 +155,10 @@
 	                            <span class="hidden-xs">Địa Chỉ Giao Hàng</span>
 	                            <span class="visible-xs-inline-block">Địa Chỉ</span>
 	                        </div>
-	                        <div class="progress"><div class="progress-bar"></div></div>
-	                        <span class="bs-wizard-dot">2</span>
+	                        <div class="progress " th:if="${step}  < 3"><div class="progress-bar"></div></div>
+	                        <div class="progress active" th:if="${step}  >= 3"><div class="progress-bar"></div></div>
+	                        <span th:if="${step}  < 2" class="bs-wizard-dot">2</span>
+	                        <span th:if="${step} >= 2" class="bs-wizard-dot active">2</span>
 	                    </div>
 
 	                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4 bs-wizard-step disabled">
@@ -164,7 +167,8 @@
 	                            <span class="visible-xs-inline-block">Thanh Toán</span>
 	                        </div>
 	                        
-	                        <span class="bs-wizard-dot">3</span>
+	                        <span th:if="${step} < 3" class="bs-wizard-dot">3</span>
+	                        <span th:if="${step} == 3" class="bs-wizard-dot active">3</span>
 	                    </div>
 
 	                </div>

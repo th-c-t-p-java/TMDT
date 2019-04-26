@@ -1,40 +1,59 @@
 package com.web.demo.service.Impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
 
 import com.web.demo.mapper.CustomerMapper;
 import com.web.demo.model.Customer;
 import com.web.demo.model.CustomerExample;
 import com.web.demo.service.UserService;
 import com.web.demo.utils.ConnectDB;
-import com.web.demo.common.*;
 
 public class UserServiceImpl implements UserService{
 
 	@Override
-	public Map<String, Object> login(String loginName,String password) throws Exception {
+	public Customer login(String loginName,String password) throws Exception {
 		
-		Map<String, Object> output = new HashMap<>();
-		output.put("status", Constants.FAIL);
-		CustomerMapper mapper = ConnectDB.getInstance().getSession().getMapper(CustomerMapper.class);
-		CustomerExample example = new CustomerExample();
-		example.createCriteria().andLoginNameEqualTo(loginName).andPasswordEqualTo(password);
-		
+		SqlSession session = ConnectDB.getInstance().getSession();
 		Customer customer = new Customer();
-		customer = mapper.selectByExample(example).get(0);
-		if(customer == null)
-		{
-			output.put("message", "Data invalid !!!");
+		try {
+			CustomerMapper mapper = session.getMapper(CustomerMapper.class);
+			//Customer customer = new Customer();
+			CustomerExample example = new CustomerExample();
+			example.createCriteria().andLoginNameEqualTo(loginName).andPasswordEqualTo(password);
+			List<Customer> lstCustomer = new ArrayList<Customer>();
+			lstCustomer = mapper.selectByExample(example);
+			if(lstCustomer.size() == 1)
+			{
+				customer = lstCustomer.get(0);
+			}
+			else
+			{
+				customer =  null;
+			}
 			
+				
 		}
-		else
-		{
-			output.put("customer", customer);
-			output.put("status",Constants.TRUE);
+		finally {
 			
+			session.close();
 		}
-		return output;
+		return customer;
+		
+	}
+	@Override
+	public Customer getBaseCustomerInfo(Integer userId) throws Exception
+	{
+		
+		CustomerMapper mapper = ConnectDB.getInstance().getSession().getMapper(CustomerMapper.class);
+		
+		Customer customer = mapper.selectByPrimaryKey(userId);
+		
+		return customer;
 	}
 
 	

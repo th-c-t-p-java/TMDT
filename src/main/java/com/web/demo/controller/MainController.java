@@ -1,12 +1,15 @@
 package com.web.demo.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,12 +53,6 @@ public class MainController {
 		//@ResponseBody
 		public String index(Model model,HttpServletRequest request) throws Exception
 		{			
-			/*if(request.getSession().getAttribute("userID")!=null)
-			{	
-				Cart cart = cartService.loadCart(request);
-				cart = cartService.createCart(request);
-				request.getSession().setAttribute("cart", cart);
-			}			*/
 			ProductMapper mapper = ConnectDB.getInstance().getSession().getMapper(ProductMapper.class);
 			List<Product> hotDealProduct = new ArrayList<Product>();
 			List<Product> productForYou = new ArrayList<Product>();
@@ -132,14 +129,14 @@ public class MainController {
 			
 		}
 		@RequestMapping("/sign-in")
-		public String signin()
+		public String signin(HttpServletRequest request,Model model)
 		{
 			HttpSession sessions = request.getSession();
 			model.addAttribute("message", sessions.getAttribute("message"));
 			return "/components/sign-in";
 		}
 		@RequestMapping("/sign-up")
-		public String signup()
+		public String signup(HttpServletRequest request,Model model)
 		{
 			HttpSession sessions = request.getSession();
 			model.addAttribute("message", sessions.getAttribute("message"));
@@ -162,20 +159,21 @@ public class MainController {
 		}
 		
 		@RequestMapping("/check-out")
-		public String checkOut( Model model,HttpServletRequest request)
+		public String checkOut( Model model,HttpServletRequest request,HttpServletResponse response) throws Exception
 		{
 			//request.getSession().setAttribute("checkoutOrder","");
-			if(request.getSession().getAttribute("userID") == null)
+			if(request.getSession().getAttribute("userID") != null)
 			{
-				if(request.getSession().getAttribute("message") !=null)
-				{
-					model.addAttribute("message",request.getSession().getAttribute("message"));
-					
-				}
-				return "/components/check-out";
+				
+				//return "/components/check-out";
+				response.sendRedirect("/check-out/step-2");
 			}
-			
-			return "/components/check-out-step-2";
+			if(request.getSession().getAttribute("message") !=null)
+			{
+				model.addAttribute("message",request.getSession().getAttribute("message"));
+				
+			}
+			return "/components/check-out";
 		}
 		
 		@RequestMapping("/check-out/step-2")

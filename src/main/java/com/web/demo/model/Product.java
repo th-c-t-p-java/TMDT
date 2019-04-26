@@ -33,6 +33,12 @@ public class Product {
 
     private Object description;
 
+    public Integer getCata() {
+    	Integer[] ctg = (Integer[])catalogId;
+    	return ctg[0];
+    }
+    
+    
     public Integer getId() {
         return id;
     }

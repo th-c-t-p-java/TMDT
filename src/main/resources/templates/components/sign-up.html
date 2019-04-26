@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-<title>Tạo tài khoản</title>
-<meta charset="utf-8"/>
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../static/css/style-sign-up.css" th:href="@{/css/style-sign-up.css}">
-  </head>
-  <body>
+	<title>Tạo tài khoản</title>
+	<meta charset="utf-8"/>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="../../static/css/style-sign-up.css" th:href="@{/css/style-sign-up.css}">
+  	<link rel="stylesheet" type="text/css" href="../../static/bootstrap/bootstrap.min.css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+	<script src="../../static/bootstrap/bootstrap.js" th:src="@{/bootstrap/bootstrap.js}"/></script>
+	<script src="../../static/bootstrap/jquery.min.js" th:src="@{/bootstrap/jquery.min.js}"/></script>
+	<script src="../../static/bootstrap/bootstrap.min.js"th:src="@{/bootstrap/bootstrap.min.js}"/></script>
+</head>
+<body>
   	<div>
     <div class="logo">
       <img src="../../static/images/tiki-logo.png" th:src="@{/images/tiki-logo.png}">
@@ -14,24 +18,49 @@
     <div class="login">
     	<h1>Đăng Ký </h1>
     </div>
-<div class="dangky">
-<label for="login_field" class="dangky1">
- Tên đăng nhập:
-</label>
-<input type="text" name="login" id="login_field" class="tendangky" tabindex="1" autocapitalize="off" autocorrect="off" autofocus="autofocus"><br>
-<label for="password" class="matkhau1">Mật Khẩu:</label>
-
-<input type="text" name="password" id="password" class="matkhau"><br>
-<label for="password" class="xacnhanmatkhau">Nhập Lại Mật Khẩu:</label>
-
-<input type="text" name="password" id="password" class="xacnhan"><br>
-<label for="password" class="email">Email:</label>
-
-<input type="text" name="password" id="password" class="email1"><br>
-<button class="dangky2">
-	Đăng Ký
+    <form action="/signup/addtouser" method="post">
+    <div class="dangky">
+    	<div class="row">
+    		<label class="col-md-4">Tên đăng nhập:</label><input class="col-md-7" type="text" name="tendangnhap" placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Mật khẩu :</label><input class="col-md-7" type="password" name="mk"placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Nhập Lại mật khẩu:</label><input class="col-md-7" type="password"placeholder="Nhập ở đây" >
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Họ:</label><input class="col-md-7" type="text" name="ho"placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Tên:</label><input class="col-md-7" type="text" name="ten"placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Ngày Sinh:</label><input class="col-md-7" type="text" name="ngaysinh"placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Số Điện Thoại:</label><input class="col-md-7" type="text" name="sdt"placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Địa Chỉ:</label><input class="col-md-7" type="text" name="diachi"placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Email:</label><input class="col-md-7" type="text" name="email"placeholder="Nhập ở đây">
+    	</div>
+    	<div class="row">
+    		<label class="col-md-4">Chứng Minh:</label><input class="col-md-7" type="text" name="chungminh"placeholder="Nhập ở đây">
+    	</div>
+    	<button class="dangky2" type="submit">
+		Đăng Ký
 </button>
-<a class="label-link" href="sign-in.html" th:href="@{sign-in}">Sign-in</a><br>
-</div>
+<div><p th:text="${message}"></p></div>
+<div class="alert alert-success" hidden="true">
+    <strong>Success!</strong> Đăng ký thành công!.
+  </div>
+  <div class="alert alert-info" hidden="false">
+    <strong>Warring!</strong> Đăng ký thất bại.
+  </div>
+    </div>
+    </form>
   </body>
   </html>

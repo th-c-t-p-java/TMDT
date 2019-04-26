@@ -93,4 +93,5 @@ public interface ProductMapper {
      * @mbg.generated Sat Mar 30 22:56:46 ICT 2019
      */
     int updateByPrimaryKey(Product record);
+    int updateIsEnable(@Param("id") Integer id);
 }

@@ -134,11 +134,15 @@ public class MainController {
 		@RequestMapping("/sign-in")
 		public String signin()
 		{
+			HttpSession sessions = request.getSession();
+			model.addAttribute("message", sessions.getAttribute("message"));
 			return "/components/sign-in";
 		}
 		@RequestMapping("/sign-up")
 		public String signup()
 		{
+			HttpSession sessions = request.getSession();
+			model.addAttribute("message", sessions.getAttribute("message"));
 			return "/components/sign-up";
 		}
 		@RequestMapping("/editproduct")
